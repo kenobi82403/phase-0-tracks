@@ -48,3 +48,31 @@ figcaption {
  font-style: italic;
  text-align: right;
 }
+
+@media screen and (max-width: 500px) {
+  body {
+    background-color: hotpink;
+  }
+
+  p {
+    color: yellow;
+  }
+
+}
+
+
+@media screen and (max-width: 350px) {
+  body {
+    text-align: center;
+  }
+
+  #external-links { 
+    width: 100%;
+   margin: 0 auto;
+   display: block;
+  }
+
+  ol > li {
+    text-align: left;
+  }
+}
