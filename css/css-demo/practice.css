@@ -1,0 +1,19 @@
+section#contact-info {
+  font-size: .8em;
+}
+
+section.job {
+  background-color: #e9e5dc;
+  border-radius: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+ul.small-text {
+  font-size: .8em;
+}
+
+li:last-of-type {
+  color: blue;
+}
