@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: arial;
+   
+}
+
+header {
+  height: 400px;
+  padding:10px;
+  margin:10px;
+  background-image: url(https://assets-cdn.github.com/images/modules/logos_page/Octocat.png);
+  background-color: pink;
+}
+
+.column-1, 
+.column-2 {
+  padding:10px;
+/*   margin: 10px; */
+  background-color: steelblue;
+  float: left;
+  width: 50%;
+}
+
+.column-2 {
+  background-color: green;
+}
+
+footer {
+  background-color: yellow;
+  clear: both;
+  width: 100%;
+  text-align: center;
+}
