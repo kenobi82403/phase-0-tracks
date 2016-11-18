@@ -1,0 +1,108 @@
+# Release 0 - Equip Your New Robot
+    1. Starting outside of our door
+    2. Scan the room for the direction of where the elevator buttons are 
+    3. walk straight toward the buttons until you are perpendicular to you then stop
+    4. turn left
+    5. walk straight until you are one step away from the buttons
+    6. Scan the buttons to locate the down arrow
+    7. Extend your right arm to the level of the down arrow while leaving two finger space 
+    8. Make a fist
+    9. Extend your index finger
+    10. Press the down arrow button
+    11. Look up
+    12. Wait until you see the elevator signal light, light  up
+    13. if light up, walk toward the direction of the elevator that light up until you are one step away from the elevator doors
+    14. Wait until the elevator doors open
+    15. Walk straight until you are one step inside the elevator
+    16. Make two lefts
+    17. Scan to your right
+    18. if there are buttons 
+    19.   turn right 
+    20.   walk until you reach the wall 
+    21.   then turn left
+    23. if there are no buttons
+    24.   turn left 
+    25.   walk until you reach the wall 
+    26.   then turn right
+    27. scan the buttons until you can find "L"
+    28. Extend your right arm to the level of the L button while leaving two finger space 
+    29. Make a fist
+    30. Extend your index finger
+    31. press the L button
+    32. Look up
+    33. Wait until you see the LCD screen show "L"
+    34. if shown, walk toward the direction of the elevator door until you are one step away from the elevator doors
+    35. Wait until the elevator doors open
+    36. Walk straight out
+
+
+# Release 1 - Find a Real Life Algorithm
+#   Task: Making a peanut butter sandwich
+
+    # locate the bread
+    1. - Scan the room until you locate the bread
+    2.   - if bread is not found
+    3.     - think of something else to eat
+    4.   -  if bread is found 
+    5.     - walk toward the direction of the bread
+    6. - if there is an obstacle 
+    7.   - turn right
+    8.   - walk straight until you can turn left 
+    9.     - turn left and walk straight 
+    10.    - if there is no where to turn left
+    11.      - stop walking
+    12.      - turn two left
+    13.      - walk straight until you can turn right
+    14.        - turn right and walk straight
+    15. - repeat step 5 to 14 until you reach the bread
+    16. - extend your arm out
+    17. - move both of your arm towards the direction of the bread
+    18. - lower both of your arm until you touch the bread
+    19. - use the left arm to put pressure on the bread
+    20. - use the right arm to take two slice of bread out
+    21. - place the two slice of bread on the table
+    # locate the knife
+    22. - lower your arm until you touch the handle of the drawer
+    23. - open the drawer
+    24. - Scan the drawer until you find a knife
+    25. - use your arm and hand to grasp the knife and place it on the table
+    # locate the peanut butter
+    26. - make two rights
+    27. - walk straight
+    28. - raise your arms
+    29. - lower the arm and use your hand to grasp the handle of the cabinet
+    30. - open the cabinet
+    31. - locate the peanut butter
+    32. - use your arm and hand to grasp the peanut butter jar
+    33. - make two rights
+    34. - walk straight 
+    35. - grasp peanut butter jar at the body with your left hand and hold it still
+    36. - use your right hand and grasp the lid of the peanut butter jar
+    37. - twist the lid in counter-clockwise 5 times
+    38. - remove the lid
+    39.     - if lid does not remove
+    40.         - repeat line 37-39
+    41.     - if lid remove
+    42.         - move on
+    43. - place the lid on the table and let go
+    44. - use your right hand to grab the knife at the non-sharp end
+    45. - navigate the knife to top middle of the jar and move in until you touch peanut butter
+    41. - move your wrist in a top down motion
+    42.     - check to see if peanut butter is on the knife 
+    43.         - if not repeat 41-42
+    44.     - if so move on
+    45. - place the peanut butter jar on the table
+    46. - use left hand to grab the bread
+    47. - use right hand with the knife and peanut butter and move it towards the bread until it touches
+    48. - spread the peanut butter on the bread
+    49.     - check and see if there is enough peanut butter on the bread
+    50.         - if so 
+    51.             - move on
+    51.         - if not
+    52.             - place the bread down
+    53.             - grab the peanut butter jar
+    54.             - repeat step 44 to 49
+    55. - place the knife down
+    56. - use right hand to grab the other slice of bread
+    57. - align the bread
+    57. - bring both hands with the bread together
