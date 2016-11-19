@@ -114,3 +114,9 @@ for i in 1..num_of_employee
 end
 
 # Release 4: Check for Suspicious Allergies
+
+# Release 5: Plot Twist
+puts
+puts "***************************************************************"
+puts
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
