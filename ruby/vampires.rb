@@ -42,6 +42,28 @@ def process_new_employee (employee_num)
       need_insurance = false 
     end
 
+  # Release 4: Check for Suspicious Allergies
+  employee_done = false
+  employee_allergies = ""
+  until employee_done
+    puts "Please enter your allergies one at a time. Once you are done, type 'done' to exit"
+    
+    employee_allergies_input = gets.chomp
+   
+    if employee_allergies_input === "done"
+      employee_done = true
+    elsif employee_allergies_input === "sunshine"
+      puts
+      return puts "Result: Probably a vampire!"
+    elsif employee_allergies === ""
+      employee_allergies += employee_allergies_input
+    else
+      employee_allergies += ", #{employee_allergies_input}"
+    end
+  end
+  
+  p employee_allergies
+
 
   puts
   puts "Employee Name: #{employee_name}"
@@ -49,7 +71,7 @@ def process_new_employee (employee_num)
   puts "Year of Birth: #{year_of_birth}"
   puts "Order Garlic? #{order_garlic}"
   puts "Insurance? #{need_insurance}"
-
+  puts "Allergies: #{employee_allergies}"
   # Release 2 Detection Logic
 
   # Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
@@ -90,3 +112,5 @@ num_of_employee = gets.chomp.to_i
 for i in 1..num_of_employee
   process_new_employee(i)
 end
+
+# Release 4: Check for Suspicious Allergies
