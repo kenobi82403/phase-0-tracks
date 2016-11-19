@@ -60,18 +60,14 @@ def process_new_employee (employee_num)
     else
       employee_allergies += ", #{employee_allergies_input}"
     end
+
+    if employee_allergies === ""
+      employee_allergies = "None"
+    end
   end
   
-  p employee_allergies
 
 
-  puts
-  puts "Employee Name: #{employee_name}"
-  puts "Employee Age: #{employee_age}"
-  puts "Year of Birth: #{year_of_birth}"
-  puts "Order Garlic? #{order_garlic}"
-  puts "Insurance? #{need_insurance}"
-  puts "Allergies: #{employee_allergies}"
   # Release 2 Detection Logic
 
   # Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
@@ -100,6 +96,13 @@ def process_new_employee (employee_num)
   end
 
   puts
+  puts "Employee Name: #{employee_name}"
+  puts "Employee Age: #{employee_age}"
+  puts "Year of Birth: #{year_of_birth}"
+  puts "Order Garlic? #{order_garlic}"
+  puts "Insurance? #{need_insurance}"
+  puts "Allergies: #{employee_allergies}"
+  puts
   puts "Result: #{result}"
   puts
 end
@@ -117,6 +120,6 @@ end
 
 # Release 5: Plot Twist
 puts
-puts "***************************************************************"
+puts "***********************************************"
 puts
 puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
