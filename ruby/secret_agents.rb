@@ -5,11 +5,11 @@ def encrypt code
   puts
   puts "Encryption process began.."
   # take care of edgecase if person enter a other than lowercase
-  code = code.downcase
+  # code = code.downcase
   puts
   puts "Your input is: #{code}"
   # create a result variable and set it to ""
-  result = "Your Output is: "
+  result = ""
   # create a counter variable and set it to 0
   i = 0
 
@@ -34,7 +34,7 @@ def encrypt code
   end # close the loop
 
   # return output
-  puts result
+  puts "Your output is: #{result}"
   puts
   return result
 
@@ -53,11 +53,11 @@ def decrypt code
   puts
   puts "Decryption process began.."
   # take care of edgecase if person enter a other than lowercase
-  code = code.downcase
+  # code = code.downcase
   puts
   puts "Your input is: #{code}"
   # create a result var to keep track of result
-  result = "Your Output is: "
+  result = ""
   # create a counter var for while loop set it to 0
   i = 0
   # create a key var to hold the 28 english character use in while loop
@@ -81,7 +81,7 @@ def decrypt code
     end # Close while loop
 
   # return output
-  puts result
+  puts "Your output is: #{result}"
   puts
   return result
 end # Close the method
@@ -95,3 +95,7 @@ encrypt("abc") # should return "bcd"
 decrypt("bcd") # should return "abc"
 encrypt("zed") # should return "afe"
 decrypt("afe") # should return "zed"
+
+#Release 4: Try a nested method call
+decrypt(encrypt("swordfish"))
+  # this nested method call works because Ruby program evaluates a method call from inside out. That is why you can also pass in a variable. The way how this code is read in Ruby is first ruby will call encrypt first and get a return value from the encrypt method then include that as a param when calling decrypt.
