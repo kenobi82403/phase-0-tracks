@@ -35,14 +35,12 @@ def encrypt code
 
   # return output
   puts "Your output is: #{result}"
-  puts
+  puts "=============================="
   return result
 
 end # close the method
 
-# ask user to input a code to encrypt
-puts "Please enter a code to encrypt"
-encrypt(gets.chomp)
+
 
 # A decrypt method that reverses the process above. Note that Ruby doesn't have a built-in method for going backward one letter. How can you find out where a letter is in the alphabet, then access the letter right before it? Hint: In the IRB session above, you learned how to ask a string for the index of a letter. "abcdefghijklmnopqrstuvwxyz" counts as a string.
 
@@ -82,20 +80,53 @@ def decrypt code
 
   # return output
   puts "Your output is: #{result}"
-  puts
+  puts "=============================="
   return result
 end # Close the method
 
-# ask user to input a code to decrypt
-puts "Pleaes enter a code to decrypt"
-decrypt(gets.chomp)
-
 #Release 3: Test Your Code
-encrypt("abc") # should return "bcd"
-decrypt("bcd") # should return "abc"
-encrypt("zed") # should return "afe"
-decrypt("afe") # should return "zed"
+# encrypt("abc") # should return "bcd"
+# decrypt("bcd") # should return "abc"
+# encrypt("zed") # should return "afe"
+# decrypt("afe") # should return "zed"
 
 #Release 4: Try a nested method call
-decrypt(encrypt("swordfish"))
+# decrypt(encrypt("swordfish"))
   # this nested method call works because Ruby program evaluates a method call from inside out. That is why you can also pass in a variable. The way how this code is read in Ruby is first ruby will call encrypt first and get a return value from the encrypt method then include that as a param when calling decrypt.
+
+# Release 5
+
+# greeting message
+puts "Howdy! What do you want to do today?"
+
+# while loop to keep the program running
+while true
+  puts
+# Ask user whether they like to encrypt, decrypt, or exit the program
+  puts "Would you like to encrypt, decrypt, or exit?"
+  # Get user response and save to userInput var 
+  userInput = gets.chomp.downcase
+  # Conditional to make handle what user would like to do
+  if(userInput === "encrypt")
+    # ask user to input a code to encrypt
+    puts "=============================="
+    puts "Please enter a code to encrypt"
+    puts "=============================="
+    encrypt(gets.chomp)
+  elsif userInput === "decrypt"
+    # ask user to input a code to decrypt
+    puts "=============================="
+    puts "Pleaes enter a code to decrypt"
+    puts "=============================="
+    decrypt(gets.chomp)
+  elsif userInput === "exit" # exit the program
+    puts "=============================="
+    puts "Thanks for using my program.. Have a nice day!"
+    break
+  else
+    # handle special case
+    puts "=============================="
+    puts "Hmm.. I'm not sure what #{userInput} is. Please only enter 'encrypt', 'decrypt' or 'exit'."
+  end
+
+end
