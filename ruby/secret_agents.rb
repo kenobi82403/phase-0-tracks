@@ -2,17 +2,25 @@
 
 # create a method call encrypt that accepts a string input that we will call code
 def encrypt code
+  puts
+  puts "Encryption process began.."
+  # take care of edgecase if person enter a other than lowercase
+  code = code.downcase
+  puts
+  puts "Your input is: #{code}"
   # create a result variable and set it to ""
-  result = ""
-
+  result = "Your Output is: "
   # create a counter variable and set it to 0
   i = 0
 
+
   # create a loop, we will use a while loop, the code within the while loop will run while the counter is less than the length of the code
   while i < code.length
-
-    # within the loop, add an if statement to test if the letter is not a space
-    if code[i] != " " 
+    # if letter is z give it a value of a
+    if code[i] === "z"
+      result += "a"
+    # if statement to test if the letter is not a space
+    elsif code[i] != " " 
       # if so call .next on each letter on each iteration and save it to a result variable
       result += code[i].next 
     else
@@ -26,7 +34,10 @@ def encrypt code
   end # close the loop
 
   # return output
-  return p result
+  puts result
+  puts
+  return result
+
 end # close the method
 
 # ask user to input a code to encrypt
@@ -39,12 +50,19 @@ encrypt(gets.chomp)
 
 # Create a method call decrypt that takes param of code
 def decrypt code
+  puts
+  puts "Decryption process began.."
+  # take care of edgecase if person enter a other than lowercase
+  code = code.downcase
+  puts
+  puts "Your input is: #{code}"
   # create a result var to keep track of result
-  result = ""
+  result = "Your Output is: "
   # create a counter var for while loop set it to 0
   i = 0
   # create a key var to hold the 28 english character use in while loop
   key = "abcdefghijklmnopqrstuvwxyz"
+
 
     # create a while loop, run while counter is less than length of code
     while i < code.length
@@ -63,9 +81,17 @@ def decrypt code
     end # Close while loop
 
   # return output
-  return p result
+  puts result
+  puts
+  return result
 end # Close the method
 
 # ask user to input a code to decrypt
 puts "Pleaes enter a code to decrypt"
 decrypt(gets.chomp)
+
+#Release 3: Test Your Code
+encrypt("abc") # should return "bcd"
+decrypt("bcd") # should return "abc"
+encrypt("zed") # should return "afe"
+decrypt("afe") # should return "zed"
