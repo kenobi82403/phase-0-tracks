@@ -10,7 +10,7 @@ p "iNvEsTiGaTiOn".swapcase == "InVeStIgAtIoN"
 p "zom".insert(1, "o") == "zoom"
 # => “zoom”
 
-# "enhance".<???>
+p "enhance".center(15) == "    enhance    "
 # => "    enhance    "
 
 # "Stop! You’re under arrest!".<???>
