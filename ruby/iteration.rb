@@ -20,3 +20,16 @@ fruit_color = {
   watermelon: "green"
 }
 
+random_arr.each do |number| 
+  puts "There were #{number} clowns"
+end 
+
+fruit_color.each do |fruit, color| 
+  puts "#{fruit.capitalize} has the color of #{color}!"
+end
+
+random_arr.map! do |number| 
+  number.next + 5
+end
+p random_arr
+
