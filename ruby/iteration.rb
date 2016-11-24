@@ -10,26 +10,70 @@
 
 # Release 1
 
+# random_arr = [2, 3, 1, 6, 7]
+
+# fruit_color = {
+#   apple: "red",
+#   banana: "yellow",
+#   dragon: "red/green",
+#   pears: "brown",
+#   watermelon: "green"
+# }
+
+# random_arr.each do |number| 
+#   puts "There were #{number} clowns"
+# end 
+
+# fruit_color.each do |fruit, color| 
+#   puts "#{fruit.capitalize} has the color of #{color}!"
+# end
+
+# random_arr.map! do |number| 
+#   number.next + 5
+# end
+# p random_arr
+
+# Release 2
+
 random_arr = [2, 3, 1, 6, 7]
 
 fruit_color = {
   apple: "red",
-  banana: "yellow",
+  banana: "green",
   dragon: "red/green",
   pears: "brown",
   watermelon: "green"
 }
 
-random_arr.each do |number| 
-  puts "There were #{number} clowns"
-end 
+# random_arr.delete_if do |number|
+#   number < 3
+# end
+# p random_arr
 
-fruit_color.each do |fruit, color| 
-  puts "#{fruit.capitalize} has the color of #{color}!"
-end
+# fruit_color.delete_if do |fruit, color|
+#   color.length > 4
+# end
+# p fruit_color
 
-random_arr.map! do |number| 
-  number.next + 5
-end
-p random_arr
+# random_arr.keep_if do |number|
+#   number < 3
+# end
+# p random_arr
 
+# fruit_color.keep_if do |fruit, color|
+#   color.length > 4
+# end
+# p fruit_color
+
+# random_arr.select! do |number|
+#   number.even?
+# end
+# p random_arr
+
+# fruit_color.select! do |fruit, color|
+#   color == "green"
+# end 
+# p fruit_color
+
+# p random_arr.drop_while {|number| number < 3}
+# p fruit_color.drop_while {|fruit, color| color.length < 8}
