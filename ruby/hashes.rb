@@ -26,14 +26,13 @@ client = {
     # has children - boolean
     # number_of_children - number 
     # children age - number
-  children: nil,
+  children: {},
   # favorite colors - array
-  favorite_colors: nil,
+  favorite_colors: [],
   # budget - hash
     # lower, higher - number
-  budget: nil,
+  budget: {},
   # decoration theme(s) - array
-  decoration_theme: nil
 }
 
 
@@ -53,40 +52,72 @@ client[:contact_num] = gets.chomp
 # email 
 puts "Please enter client's email."
 client[:contact_email] = gets.chomp
+
 # children 
-# children: {
-#   has_children: boolean,
-#   
-# }
-# ask if there's children
-# if yes then initiate array and ask how many
-# loop to the number of children and for each instance, ask for age and sex and push to array
 puts "Do you have children? (true or false)"
-while client[:children] == nil
-  client[:children] = gets.chomp.downcase  
-  if client[:children] == "true"
-    client[:children] = true
-  elsif client[:children] == "false"
-    client[:children] = false  
+# method to request more info from child if answer to has_children is true in regards to sex and age
+def request_child hash
+  # set up new key and set it as an array
+  hash[:children][:child_age_sex] = []
+  # assign it to children to make it less DRY
+  children = hash[:children][:child_age_sex]
+  # ask how many children to determine how many times to loop
+  puts "how many children do you have?"
+  child_num = gets.chomp.to_i
+  # loop to the # of children, ask user for child age and sex
+  for each_child in 1..child_num
+    temp_array = []
+    puts "What is the age of child ##{each_child}"
+    temp_array.push(gets.chomp)
+    puts "What is the sex of child ##{each_child}"
+    temp_array.push(gets.chomp)
+    # push it to client array
+    children.push(temp_array)
+  end
+end
+# loop to ensure correct response is received
+while client[:children] == {}
+  user_input = gets.chomp.downcase  # to ensure all response are lowercase
+  # conditional, set boolean to has_children if met.
+  if user_input == "true"
+    # if true fire up request_child method
+    client[:children][:has_children] = true
+    request_child(client)
+  elsif user_input == "false"
+    client[:children][:has_children] = false
   else
-    client[:children] = nil
-    puts "Please only input true or false."
+    # loop again if desire response not received
+    client[:children] = {}
+    puts "Please only answer with true or false."
   end
 end
 
 # favorite colors - array
-# loop, ask for favorite colors until user is type exit"
+puts "What is your favorite color? (type 'exit' when done)"
+# loop, ask for favorite colors until user type exit"
+loop do
+  user_input = gets.chomp.downcase
+  break if user_input == "exit"
+  client[:favorite_colors].push(user_input)
+  puts "What is your favorite color? (type 'exit' when done)"
+end
 
 # budget lower, higher - number
-# initiate array
 # ask for lowest budget and push to array
+puts "What is your lowest budget?"
+client[:budget][:lowest] = gets.chomp.to_i
 # ask for highest budget and push to array
+puts "What is your highest budget?"
+client[:budget][:highest] = gets.chomp.to_i
 
-# decoration theme - string
-# ask for decoration theme
-
+puts
+puts "Client Detail:"
 client.each { |key, value|
-  if value != nil && value != "" && value != 0
+  if value != nil && 
+     value != "" && 
+     value != 0 && 
+     value != [] && 
+     value != {}
     puts "#{key}: #{value}"
   end
 }
