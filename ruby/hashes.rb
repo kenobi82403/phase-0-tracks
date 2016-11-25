@@ -61,6 +61,18 @@ client[:contact_email] = gets.chomp
 # ask if there's children
 # if yes then initiate array and ask how many
 # loop to the number of children and for each instance, ask for age and sex and push to array
+puts "Do you have children? (true or false)"
+while client[:children] == nil
+  client[:children] = gets.chomp.downcase  
+  if client[:children] == "true"
+    client[:children] = true
+  elsif client[:children] == "false"
+    client[:children] = false  
+  else
+    client[:children] = nil
+    puts "Please only input true or false."
+  end
+end
 
 # favorite colors - array
 # loop, ask for favorite colors until user is type exit"
@@ -74,7 +86,7 @@ client[:contact_email] = gets.chomp
 # ask for decoration theme
 
 client.each { |key, value|
-  if value != nil 
+  if value != nil && value != "" && value != 0
     puts "#{key}: #{value}"
   end
 }
