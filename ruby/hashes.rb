@@ -12,37 +12,36 @@
 
 # initiate empty hash for the following field
 client_information = {
-  name: nil,
-  age: nil,
-  address: nil,
-  contact_num: nil,
-  contact_email: nil,
-  children: {
-    has_children: nil,
-    children_age_sex: []
-  },
-  favorite_colors: [],
-  budget: {
-    lowest: nil,
-    highest: nil
-  }
-}
   # name - string
-  # age - number
+  name: nil,
+  # age - number 
+  age: nil,
   # address - string
+  address: nil,
   # contact_num - string
+  contact_num: nil,
   # contact_email - string
+  contact_email: nil,
   # children - hash
     # has children - boolean
     # number_of_children - number 
     # children age - number
-  # lighting
-    # additional lighting - boolean
-    # which room - array
+  children: {
+    has_children: nil,
+    children_age_sex: []
+  },
+  # favorite colors - array
+  favorite_colors: [],
   # budget - hash
     # lower, higher - number
-  # favorite colors - array
+  budget: {
+    lowest: nil,
+    highest: nil
+  },
   # decoration theme(s) - array
+  decoration_theme: []
+}
+
 
 #get input from client for
 
