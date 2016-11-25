@@ -11,7 +11,7 @@
 # Print the latest version of the hash, and exit the program.
 
 # initiate empty hash for the following field
-client_information = {
+client = {
   # name - string
   name: nil,
   # age - number 
@@ -26,35 +26,55 @@ client_information = {
     # has children - boolean
     # number_of_children - number 
     # children age - number
-  children: {
-    has_children: nil,
-    children_age_sex: []
-  },
+  children: nil,
   # favorite colors - array
-  favorite_colors: [],
+  favorite_colors: nil,
   # budget - hash
     # lower, higher - number
-  budget: {
-    lowest: nil,
-    highest: nil
-  },
+  budget: nil,
   # decoration theme(s) - array
-  decoration_theme: []
+  decoration_theme: nil
 }
 
 
 #get input from client for
-
 # full name
-# address
-# telephone number
-# email 
+puts "What is the full name of your client?"
+client[:name] = gets.chomp
 # age
-# number of children 
-# pets?
-# is additional lighting needed?
-# if yes, which room?
-# what is lower bound of your budget?
-# what is the highest bound of your budget?
-# Enter favorite colors.. type done when finished
-# Decoration theme
+puts "How old is your client?"
+client[:age] = gets.chomp.to_i
+# address
+puts "What is your client's address?"
+client[:address] = gets.chomp
+# telephone number
+puts "Please enter client's telephone number."
+client[:contact_num] = gets.chomp
+# email 
+puts "Please enter client's email."
+client[:contact_email] = gets.chomp
+# children 
+# children: {
+#   has_children: boolean,
+#   
+# }
+# ask if there's children
+# if yes then initiate array and ask how many
+# loop to the number of children and for each instance, ask for age and sex and push to array
+
+# favorite colors - array
+# loop, ask for favorite colors until user is type exit"
+
+# budget lower, higher - number
+# initiate array
+# ask for lowest budget and push to array
+# ask for highest budget and push to array
+
+# decoration theme - string
+# ask for decoration theme
+
+client.each { |key, value|
+  if value != nil 
+    puts "#{key}: #{value}"
+  end
+}
