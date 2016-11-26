@@ -2,7 +2,7 @@
 #   car => has people => name, age, clothes, occupation
 
 highway = {
-  "car 1" = {
+  "car 1" => {
     mom: {
       name: "Mary Pooh",
       age: 40,
@@ -10,7 +10,7 @@ highway = {
         'knit',
         'music',
         'football'
-      ]
+      ],
       occupation: [
         'CEO',
         'Mary Sue Corporation'
@@ -23,7 +23,7 @@ highway = {
         'video games',
         'music',
         'woodwork'
-      ]
+      ],
       occupation: [
         'Creative Director',
         'Mary Sue Corporation'
@@ -36,7 +36,7 @@ highway = {
         'video games',
         'music',
         'football'
-      ]
+      ],
       occupation: [
         'student',
         'Dev Bootcamp'
