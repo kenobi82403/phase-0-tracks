@@ -44,5 +44,14 @@ def generate_alias name
   new_alias
 end
 
-puts 'Please input your name'
-p generate_alias gets.chomp
+# USER INTERFACE
+
+puts 'Welcome to the new alias generator!'
+loop do
+  puts "Please input a name or type 'exit' to end program"
+  user_input = gets.chomp
+  break if user_input.downcase == "exit"
+  p generate_alias user_input
+end
+puts 'Now Exiting........'
+puts 'Thank you for using the new alias generator..Come back soon!'
