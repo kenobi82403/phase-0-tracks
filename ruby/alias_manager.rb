@@ -46,12 +46,30 @@ end
 
 # USER INTERFACE
 
+# initiate new hash
+alias_record = {}
+# welcome message
 puts 'Welcome to the new alias generator!'
+# infinite loop for program until user type exit
 loop do
+  # prompt user for input
+  puts
   puts "Please input a name or type 'exit' to end program"
-  user_input = gets.chomp
+  # same input to variable
+  user_input = gets.chomp.split(' ').map!{|word| word.capitalize}.join(' ')
+  # provide when to break out of loop
   break if user_input.downcase == "exit"
-  p generate_alias user_input
+  # call generate_alias method, print result on screen and save result to alias_record with user_input as key and return value as the value
+  p alias_record[user_input] = generate_alias(user_input)
 end
+puts
 puts 'Now Exiting........'
-puts 'Thank you for using the new alias generator..Come back soon!'
+puts
+puts 'Agent alias record:'
+# iterate over hash and print key and values to console
+alias_record.each { |key, value|
+  puts "#{key} is actually #{value}!"
+}
+puts
+puts 'Thank you for using the new alias generator..Please come back soon!'
+
