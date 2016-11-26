@@ -15,7 +15,7 @@ highway = {
         'CEO',
         'Mary Sue Corporation'
       ]
-    }
+    },
     dad: {
       name: "John Pooh",
       age: 41,
@@ -28,7 +28,7 @@ highway = {
         'Creative Director',
         'Mary Sue Corporation'
       ]
-    }
+    },
     son: {
       name: "Sam Pooh",
       age: 18,
