@@ -1,5 +1,4 @@
-# highway construct
-#   car => has people => name, age, clothes, occupation
+# family construct
 
 family = {
   mom: {
