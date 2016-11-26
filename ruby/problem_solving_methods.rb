@@ -83,5 +83,52 @@ fib(100)[-1] == 218922995834555169026
 # Choose a simple sorting algorithm to learn about. Bubble sort or insertion sort are good ones for beginners, but you're welcome to be more adventurous.
 # Form a conceptual understanding of how the algorithm works. What helps you grasp it? Do visualizations help? How can you find the right materials for yourself?
 # Notice your emotional state as you tackle this algorithm: do you feel frustrated, underqualified, stupid, or overwhelmed? Or is it more like excitement and curiosity? How do you think these feelings affect your ability to learn?
+
 # Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
 # Implement the sorting method in Ruby.
+
+# Implementing Merge Sort
+# Divide and conquer
+
+# define merge sort, an array of integers as params
+
+  # Step 1 Divide
+    # figure out half point
+  
+    # if array length equals to 1
+    
+      # return array
+  
+    # pop data to left array variable  up to half point
+    
+    # pop data to right array variable from half point to length of array
+  
+  # Step 2 Sort and Merge
+
+    # while loop - either right array length is not 0 || left array length is not 0
+      # if right array length is 0
+      
+        # shift data from left array into sorted_array variable
+        
+      # elsif left array length is 0
+        
+        # shift data from right array into sorted_array variable
+      
+      # elsif left array is less than right array
+        
+        # shift data from left array into sorted_array variable
+      
+      # else 
+      
+        # shift data from right array into sorted_array variabl 
+        
+      # end if statement
+    # end loop 
+  
+  # Return merged array
+
+# end method
+
+# test data
+# def merge_sort [15, 4, 8, 16]
+# [4, 8, 15, 16]
