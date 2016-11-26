@@ -72,11 +72,14 @@ def fib(terms)
 end
 
 # test case
-fib(6) == [0,1,1,2,3,5]
-fib(100)[-1] == 218922995834555169026
+p fib(6) == [0,1,1,2,3,5]
+p fib(100)[-1] == 218922995834555169026
 
 
 # Release 2: Sort an Array
+puts
+puts 'Release 2: Sort an Array - Merge Sort'
+puts
 # Ruby's built-in sorting methods will sort an array for you, but understanding how these methods work can help you understand how programmers tackle a problem. This is really more of a "research on your own" challenge in disguise -- understanding the algorithm is usually the more challenging part, rather than actually writing the code for it.
 
 # DO THE THING
@@ -90,45 +93,60 @@ fib(100)[-1] == 218922995834555169026
 # Implementing Merge Sort
 # Divide and conquer
 
-# define merge sort, an array of integers as params
-
+def merge_sort int_array
   # Step 1 Divide
     # figure out half point
-  
+    length = int_array.length
+    half_point = length / 2
     # if array length equals to 1
+    if length <= 1
+      return int_array
+    else
+    # shift data to left array variable  up to half point
+    left_array = merge_sort(int_array[0...half_point])
+    # shift data to right array variable from half point to length of array
+    right_array = merge_sort(int_array[half_point..length])
+    end
     
-      # return array
-  
-    # pop data to left array variable  up to half point
+    # puts 'left_array'
+    # p left_array
+    # puts 'right array'
+    # p right_array
     
-    # pop data to right array variable from half point to length of array
-  
   # Step 2 Sort and Merge
-
-    # while loop - either right array length is not 0 || left array length is not 0
-      # if right array length is 0
-      
-        # shift data from left array into sorted_array variable
-        
-      # elsif left array length is 0
-        
+    sorted_array = []
+    # for loop stop when iterator reaches the sum of the length of left_array and right_array
+    for i in 0...(left_array.length + right_array.length)
+      # if left array length is 0
+      if left_array.length == 0
         # shift data from right array into sorted_array variable
-      
-      # elsif left array is less than right array
-        
+        sorted_array.push(right_array.shift)
+      # elsif right array length is 0
+      elsif right_array.length == 0
         # shift data from left array into sorted_array variable
-      
+        sorted_array.push(left_array.shift)
+      # elsif left array is less than right array
+      elsif left_array[0] < right_array[0]
+        # shift data from left array into sorted_array variable
+        sorted_array.push(left_array.shift)
       # else 
-      
+      else
         # shift data from right array into sorted_array variabl 
-        
+        sorted_array.push(right_array.shift)
       # end if statement
+      end
+      # puts 'debug sorted_array'
+      # p sorted_array
     # end loop 
+    end
   
   # Return merged array
-
+   sorted_array
 # end method
+end
 
 # test data
-# def merge_sort [15, 4, 8, 16]
-# [4, 8, 15, 16]
+p merge_sort([108,15,50,4,8,42,23,16]) == [4, 8, 15, 16, 23, 42, 50, 108]
+# [4, 8, 15, 16, 23, 42, 50, 108]
+p merge_sort([150, 5, 65, 9, 87, 208, 99, 30]) == [5, 9, 30, 65, 87, 99, 150, 208]
+# [4, 8, 15, 16, 23, 42, 50, 108]
