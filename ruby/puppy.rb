@@ -5,9 +5,9 @@
 # Friendly: yes
 # Name: varies
 # Color: varies
-# Fur_length: short
-# Size: small
-# Max_life: 18
+# Fur_length: varies
+# Size: varies
+# Life_span: varies
 
 # BEHAVIOR -----------------------
 # Jump
