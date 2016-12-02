@@ -49,6 +49,15 @@ class Santa
     @gender = new_gender
   end
 
+  # getter method for @age
+  def age
+    @age
+  end
+  
+  # getter method for @ethnicity
+  def ethnicity
+    @ethnicity
+  end
 end
 
 # Create new Santa instance and call it Nick
@@ -133,7 +142,8 @@ santas[0].gender = "formerly agender"
 santas[0].get_mad_at "Vixen"
 p santas[0]
 
-
+puts santas[0].age
+puts santas[0].ethnicity
 
 
 
