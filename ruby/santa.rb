@@ -2,6 +2,11 @@
 # eat milk and cookies = takes a cookie type and print "That was a good <type of cookie here>!"
 
 class Santa
+  # read access outside of class
+  attr_reader :ethnicity, :age
+  # read and write access outside of class
+  attr_accessor :gender
+  
   # initialize method that prints "Initializing Santa Instance..."
   def initialize(name, gender, ethnicity, time_period)
     puts 'Initializing Santa Instance...'
@@ -13,6 +18,8 @@ class Santa
     @age = 0
   end
 
+  
+  
   def speak
     puts "Ho, ho, ho! Haaappy holidays!"
   end
@@ -21,23 +28,34 @@ class Santa
     puts "That was a good #{cookie_type}!"
   end
 
+  # attribute-changing methods
+  
+  # increment Santa's age by one year
+  def celebrate_birthday
+    @age += 1
+  end
+  
+  # take's a reindeer name as a param and move that reindeer in last place in the reindeer ranking
+  def get_mad_at(naughty_reindeer)
+    # init new temp array
+    temp_arr = []
+    # traverse reindeer_ranking array and push each data to temp_arr skipping over naughty reindeer
+    @reindeer_ranking.length.times do |i|
+      if @reindeer_ranking[i] != naughty_reindeer
+        temp_arr << @reindeer_ranking[i]
+      end
+    end
+    # push naughty_reindeer into temp_arr
+    temp_arr << naughty_reindeer
+    # set temp_arr to @reindeer_ranking
+    @reindeer_ranking = temp_arr
+  end
+
 end
 
-# Create new Santa instance and call it Nick
-# Nick = Santa.new
-# Nick.speak
-# Nick.eat_milk_and_cookies("Oatmeal")
 
 santas = []
 
-# Adding Santa instances in Array
-# santas << Santa.new("agender", "black")
-# santas << Santa.new("female", "Latino")
-# santas << Santa.new("bigender", "white")
-# santas << Santa.new("male", "Japanese")
-# santas << Santa.new("female", "prefer not to say")
-# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
-# santas << Santa.new("N/A", "N/A")
 
 # Refactored Santa Instances in Array
 santa_genders = [
@@ -85,57 +103,62 @@ length = santa_name.length
 
 length.times do |i|
   santas << Santa.new(
+              santa_name[i],
               santa_genders[i], 
               santa_ethnicities[i],
-              santa_name[i],
               santa_time_period
             )
 end
 
-length.times do |i|
-  p santas[i]
-end
+# length.times do |i|
+#   p santas[i]
+# end
 
 # Test each instance of array with instance method
-santas.each { |int| puts int.speak }
+# santas.each { |int| int.speak }
+
+p santas[0]
+santas[0].celebrate_birthday
+santas[0].gender = "formerly agender"
+santas[0].get_mad_at "Vixen"
+p santas[0]
+
+puts santas[0].age
+puts santas[0].ethnicity
+puts santas[0].gender
 
 
 
 
 
+# Previous codes before refactored above
+
+# Adding Santa instances in Array
+# santas << Santa.new("agender", "black")
+# santas << Santa.new("female", "Latino")
+# santas << Santa.new("bigender", "white")
+# santas << Santa.new("male", "Japanese")
+# santas << Santa.new("female", "prefer not to say")
+# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
+# santas << Santa.new("N/A", "N/A")
+
+# Create new Santa instance and call it Nick
+# Nick = Santa.new
+# Nick.speak
+# Nick.eat_milk_and_cookies("Oatmeal")
 
 
-
-
-
-
-################################ Notes
-
-# class Puppy
-#   def initialize(name)
-#   	@name = name
-#   end
-	
-#   def bark
-#   	puts "#{@name} says: Woof!"
-#   end
+# setter method for @gender allow to be reassigned from outside the class def 
+# def gender=(new_gender)
+#   @gender = new_gender
 # end
 
-# # we make an array of names to build puppies with
-# names = ["Fido", "Spot", "Duchess", "Ginger"]
-
-# # we make an empty container for our puppy collection
-# puppies = []
-
-# puts "Iterating through names list to create puppies ..."
-# names.each do |name|
-#   puts "Creating a puppy named #{name} ..."
-#   puppies << Puppy.new(name)
-#   puts "There are now #{puppies.length} Puppy instances in the array"
-#   puts "----"
+# getter method for @age
+# def age
+#   @age
 # end
 
-# puts "Testing each Puppy instance in the array to make sure it can bark ..."
-# puppies.each do |puppy|
-#   puppy.bark
+# getter method for @ethnicity
+# def ethnicity
+#   @ethnicity
 # end
