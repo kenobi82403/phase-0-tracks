@@ -2,6 +2,11 @@
 # eat milk and cookies = takes a cookie type and print "That was a good <type of cookie here>!"
 
 class Santa
+  # read access outside of class
+  attr_reader :ethnicity, :age
+  # read and write access outside of class
+  attr_accessor :gender
+  
   # initialize method that prints "Initializing Santa Instance..."
   def initialize(name, gender, ethnicity, time_period)
     puts 'Initializing Santa Instance...'
@@ -13,6 +18,8 @@ class Santa
     @age = 0
   end
 
+  
+  
   def speak
     puts "Ho, ho, ho! Haaappy holidays!"
   end
@@ -44,37 +51,11 @@ class Santa
     @reindeer_ranking = temp_arr
   end
 
-  # setter method for @gender allow to be reassigned from outside the class def 
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-
-  # getter method for @age
-  def age
-    @age
-  end
-  
-  # getter method for @ethnicity
-  def ethnicity
-    @ethnicity
-  end
 end
 
-# Create new Santa instance and call it Nick
-# Nick = Santa.new
-# Nick.speak
-# Nick.eat_milk_and_cookies("Oatmeal")
 
 santas = []
 
-# Adding Santa instances in Array
-# santas << Santa.new("agender", "black")
-# santas << Santa.new("female", "Latino")
-# santas << Santa.new("bigender", "white")
-# santas << Santa.new("male", "Japanese")
-# santas << Santa.new("female", "prefer not to say")
-# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
-# santas << Santa.new("N/A", "N/A")
 
 # Refactored Santa Instances in Array
 santa_genders = [
@@ -144,10 +125,40 @@ p santas[0]
 
 puts santas[0].age
 puts santas[0].ethnicity
+puts santas[0].gender
 
 
 
 
 
+# Previous codes before refactored above
+
+# Adding Santa instances in Array
+# santas << Santa.new("agender", "black")
+# santas << Santa.new("female", "Latino")
+# santas << Santa.new("bigender", "white")
+# santas << Santa.new("male", "Japanese")
+# santas << Santa.new("female", "prefer not to say")
+# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
+# santas << Santa.new("N/A", "N/A")
+
+# Create new Santa instance and call it Nick
+# Nick = Santa.new
+# Nick.speak
+# Nick.eat_milk_and_cookies("Oatmeal")
 
 
+# setter method for @gender allow to be reassigned from outside the class def 
+# def gender=(new_gender)
+#   @gender = new_gender
+# end
+
+# getter method for @age
+# def age
+#   @age
+# end
+
+# getter method for @ethnicity
+# def ethnicity
+#   @ethnicity
+# end
