@@ -8,9 +8,9 @@
 #  E.g.  require 'SecureRandom'
 #        SecureRandom.uuid or SecureRandom.base64 to generate passwords
 #  Math module is already loaded
-# 
+
 #  SomeModule.singleton_methods = will output all the methods that require you to call with SomeModule.some_methods
-# 
+
 #  Standalone Modules = require you to use self keyword for its methods
 
 module Shout
