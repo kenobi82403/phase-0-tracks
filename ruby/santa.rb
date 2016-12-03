@@ -12,7 +12,7 @@ class Santa
     @ethnicity = ethnicity
     @time_period = time_period
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
+    @age = rand(140)
   end
 
   # speak = 'Ho, ho, ho! Haaappy holidays!"
@@ -103,17 +103,17 @@ santa_time_period = [
 ]
 
 # declare empty santas array to store instances
-santas = []
+# santas = []
 
 # loop over length of santa_name array and create new santa class based on the number of names while passing data from variables  
-santa_name.length.times do |i|
-  santas << Santa.new(
-              santa_name[i],
-              santa_genders[i], 
-              santa_ethnicities[i],
-              santa_time_period[i]
-            )
-end
+# santa_name.length.times do |i|
+#   santas << Santa.new(
+#               santa_name[i],
+#               santa_genders[i], 
+#               santa_ethnicities[i],
+#               santa_time_period[i]
+#             )
+# end
 
 # length.times do |i|
 #   p santas[i]
@@ -122,10 +122,27 @@ end
 # Test each instance of array with instance method
 # santas.each { |int| int.speak }
 
-santas[0].print_santa # print all instance variable for Harley
-santas[0].celebrate_birthday # increment age by 1
-santas[0].gender = "formerly agender" # change gender to formerly agender
-santas[0].get_mad_at "Vixen" # bump Vixen to the last place
-santas[0].print_santa # print all instance variable for Harley
+# santas[0].print_santa # print all instance variable for Harley
+# santas[0].celebrate_birthday # increment age by 1
+# santas[0].gender = "formerly agender" # change gender to formerly agender
+# santas[0].get_mad_at "Vixen" # bump Vixen to the last place
+# santas[0].print_santa # print all instance variable for Harley
 
-santas[1].print_santa # print all instance variable for Zlatica
+# santas[1].print_santa # print all instance variable for Zlatica
+
+# SantaCon Simulator Interface
+puts
+puts ("#" * 10) + " SantaCon Simulator v1.0!" + ("#" * 10)
+puts
+puts "How many Santas would you like?"
+num_of_santas = gets.chomp.to_i
+
+# reiterate this code based on user's input
+num_of_santas.times do |i|
+  Santa.new(  santa_name.sample(1),
+              santa_genders.sample(1), 
+              santa_ethnicities.sample(1),
+              santa_time_period.sample(1)  )
+        .print_santa # method to print all attributes
+
+end
