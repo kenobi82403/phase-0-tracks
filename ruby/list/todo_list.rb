@@ -20,7 +20,9 @@ class TodoList
     @get_items = new_array
   end
 
-  def
+  def get_item(index)
+    @get_items[index]
+  end
 
 end
 
