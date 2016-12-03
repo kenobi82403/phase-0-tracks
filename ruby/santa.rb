@@ -1,11 +1,8 @@
-# speak = 'Ho, ho, ho! Haaappy holidays!"
-# eat milk and cookies = takes a cookie type and print "That was a good <type of cookie here>!"
-
 class Santa
   # read access outside of class
-  attr_reader :ethnicity, :age
+  attr_reader :ethnicity, :age, :reindeer_ranking
   # read and write access outside of class
-  attr_accessor :gender
+  attr_accessor :gender, :time_period, :name
   
   # initialize method that prints "Initializing Santa Instance..."
   def initialize(name, gender, ethnicity, time_period)
@@ -18,24 +15,23 @@ class Santa
     @age = 0
   end
 
-  
-  
+  # speak = 'Ho, ho, ho! Haaappy holidays!"
   def speak
     puts "Ho, ho, ho! Haaappy holidays!"
   end
   
+  # eat milk and cookies = takes a cookie type and print "That was a good <type of cookie here>!"
   def eat_milk_and_cookies(cookie_type)
-    puts "That was a good #{cookie_type}!"
+    puts "Hmmm!! That was a good #{cookie_type}!"
   end
 
-  # attribute-changing methods
-  
-  # increment Santa's age by one year
+  # ATTRIBUTE-CHANGING methods
+  # Increment Santa's age by one year
   def celebrate_birthday
     @age += 1
   end
   
-  # take's a reindeer name as a param and move that reindeer in last place in the reindeer ranking
+  # Take's a reindeer name as a param and move that reindeer to last place in the reindeer ranking
   def get_mad_at(naughty_reindeer)
     # init new temp array
     temp_arr = []
@@ -51,13 +47,31 @@ class Santa
     @reindeer_ranking = temp_arr
   end
 
+  # Class method to print all instance variable
+  def print_santa
+    puts
+    puts ("#" * 10) + ' Your Instance Variables: ' + ("#" * 10)
+    puts
+    puts "Name: #{@name}"
+    puts "Age: #{@age}"
+    puts "Gender: #{@gender}"
+    puts "Ethnicity: #{@ethnicity}"
+    puts "Time Period: #{@time_period}"
+    puts "Reindeer Ranking: #{@reindeer_ranking}"
+  end
 end
 
-
-santas = []
-
-
 # Refactored Santa Instances in Array
+santa_name = [
+  "Harley Claesson",
+  "Zlatica Frank",
+  "Eusebius Langenberg",
+  "Xanthos Duffy",
+  "Clara Sokal",
+  "Lucilius Mathilda",
+  "Jolanda Kroger"
+]
+
 santa_genders = [
   "agender", 
   "female", 
@@ -78,16 +92,6 @@ santa_ethnicities = [
   "N/A"
 ]
   
-santa_name = [
-  "Harley Claesson",
-  "Zlatica Frank",
-  "Eusebius Langenberg",
-  "Xanthos Duffy",
-  "Clara Sokal",
-  "Lucilius Mathilda",
-  "Jolanda Kroger"
-]
-  
 santa_time_period = [
   "Ice age",
   "Middle age",
@@ -97,16 +101,17 @@ santa_time_period = [
   "Dark age",
   "Modern"
 ]
-  
-  
-length = santa_name.length
 
-length.times do |i|
+# declare empty santas array to store instances
+santas = []
+
+# loop over length of santa_name array and create new santa class based on the number of names while passing data from variables  
+santa_name.length.times do |i|
   santas << Santa.new(
               santa_name[i],
               santa_genders[i], 
               santa_ethnicities[i],
-              santa_time_period
+              santa_time_period[i]
             )
 end
 
@@ -117,48 +122,10 @@ end
 # Test each instance of array with instance method
 # santas.each { |int| int.speak }
 
-p santas[0]
-santas[0].celebrate_birthday
-santas[0].gender = "formerly agender"
-santas[0].get_mad_at "Vixen"
-p santas[0]
+santas[0].print_santa # print all instance variable for Harley
+santas[0].celebrate_birthday # increment age by 1
+santas[0].gender = "formerly agender" # change gender to formerly agender
+santas[0].get_mad_at "Vixen" # bump Vixen to the last place
+santas[0].print_santa # print all instance variable for Harley
 
-puts santas[0].age
-puts santas[0].ethnicity
-puts santas[0].gender
-
-
-
-
-
-# Previous codes before refactored above
-
-# Adding Santa instances in Array
-# santas << Santa.new("agender", "black")
-# santas << Santa.new("female", "Latino")
-# santas << Santa.new("bigender", "white")
-# santas << Santa.new("male", "Japanese")
-# santas << Santa.new("female", "prefer not to say")
-# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
-# santas << Santa.new("N/A", "N/A")
-
-# Create new Santa instance and call it Nick
-# Nick = Santa.new
-# Nick.speak
-# Nick.eat_milk_and_cookies("Oatmeal")
-
-
-# setter method for @gender allow to be reassigned from outside the class def 
-# def gender=(new_gender)
-#   @gender = new_gender
-# end
-
-# getter method for @age
-# def age
-#   @age
-# end
-
-# getter method for @ethnicity
-# def ethnicity
-#   @ethnicity
-# end
+santas[1].print_santa # print all instance variable for Zlatica
