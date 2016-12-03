@@ -1,8 +1,12 @@
 class TodoList
   attr_accessor :get_items
-  
+
   def initialize(list_arr)
     @get_items = list_arr
+  end
+
+  def add_item(item)
+    @get_items << item
   end
 
 
