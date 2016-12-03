@@ -137,9 +137,9 @@ print_list(joes_list)
 # Navigator: Kendy Ng
 # Guide: Clint Mullins
 
-# What did you learn about pseudocode from working on this challenge?  I've learned that if we spend time on actually thinking and writing the whole program design and logic out in plain English, it makes coding the actual program a lot more easier, efficient, and less buggy. Pseudo code FTW!
+# What did you learn about pseudo-code from working on this challenge?  I've learned that if we spend time on actually thinking and writing the whole program design and logic out in plain English, it makes coding the actual program a lot more easier, efficient, and less buggy. Pseudo code FTW!
 
-# What are the tradeoffs of using arrays and hashes for this challenge? Originally I thought of using an Array, however the trade off on using an array because of how it is naturally ordered. However, after learning more about the requirements, an Hash is more appropriate because if we are to use an Array, it would take additional steps to perform certain methods like add, delete, and update. The reason is probably because of how Arrays and Hash are designed. For an Array, we would need to iterate over the array n times just to find the correct item we're looking for while Hash on the other hand, it is much faster to lookup because of its key/value pair feature. 
+# What are the trade offs of using arrays and hashes for this challenge? Originally I thought of using an Array, however the trade off on using an array because of how it is naturally ordered. However, after learning more about the requirements, an Hash is more appropriate because if we are to use an Array, it would take additional steps to perform certain methods like add, delete, and update. The reason is probably because of how Arrays and Hash are designed. For an Array, we would need to iterate over the array n times just to find the correct item we're looking for while Hash on the other hand, it is much faster to lookup because of its key/value pair feature. 
 
 # What does a method return? A method returns a value. Either it will return the value of the last code in the method or returning explicitly where the user tells it to.
 
@@ -147,4 +147,4 @@ print_list(joes_list)
 
 # How can you pass information between methods? You can invoke the method inside another method or pass in as an argument to return the information.
 
-# What concepts were solidified in this challenge, and what concepts are still confusing? I would say I am much more comfortable with writing pseudocode after this challenge, the concept that is still confusing would be passing in methods in as an argument. Coming from learning javascript first, javascript allows you to pass in a method as a callback. I'm guessing the equivalent of that would be a proc/block? I will be digging into the materials more to learn more about it.
+# What concepts were solidified in this challenge, and what concepts are still confusing? I would say I am much more comfortable with writing pseudo-code after this challenge, the concept that is still confusing would be passing in methods in as an argument. Coming from learning JavaScript first, JavaScript allows you to pass in a method as a callback. I'm guessing the equivalent of that would be a Procs/blocks? I will be digging into the materials more to learn more about it.
