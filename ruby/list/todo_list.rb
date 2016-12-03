@@ -9,6 +9,18 @@ class TodoList
     @get_items << item
   end
 
+  def delete_item(item)
+    new_array = []
+    @get_items.each do |index|
+      if index != item
+        new_array << index
+      end
+    end
+
+    @get_items = new_array
+  end
+
+  def
 
 end
 
