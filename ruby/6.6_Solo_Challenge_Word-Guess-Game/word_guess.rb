@@ -8,7 +8,7 @@ class WordGuessGame
               :guess_count,
               :guess_history, 
               :is_over, 
-              :current_state
+              :puzzle
 
   # Instance method to initialize
   #     input: a string
@@ -25,7 +25,8 @@ class WordGuessGame
     @guess_count = 0
     @guess_history = []
     @is_over = false
-    @current_state = ('_' * secret_word.length).split('')
+    @puzzle = ('_' * secret_word.length).split('')
+    print_puzzle
   end
 
   # Instance method to guess letter 
@@ -48,12 +49,12 @@ class WordGuessGame
       @guess_count += 1
       @guess_history << letter
     end
-    # @secret_word.length.times do |index|
-    #   if @secret_word.split('')[index] == letter
-    #     @current_state.split(' ')[index] = letter
-    #   end
-    # end
-    # print_puzzle
+    @secret_word.length.times do |index|
+      if @secret_word.split('')[index] == letter
+        @puzzle[index] = letter
+      end
+    end
+    print_puzzle
   end
 
   # Instance method to print current state
@@ -63,8 +64,15 @@ class WordGuessGame
   #     2). puts on the current state of the word puzzle
   # output:  a string
   def print_puzzle
-
+    @puzzle.join(' ')
   end
 end
 
 # USER INTERFACE / DRIVER CODES
+# game = WordGuessGame.new('kendy')
+# game.guess_letter('e')
+# game.guess_letter('e')
+# game.guess_letter('d')
+# p game.guess_history
+# p game.guess_count
+# puts game.print_puzzle == '_ e _ d _'

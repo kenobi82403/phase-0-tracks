@@ -16,15 +16,15 @@ describe WordGuessGame do
   # Initiate a WordGuessGame class for testing
   let(:game){WordGuessGame.new('kendy')}
   
-  # Test initiate method to have set attributes secret_word, guess_remaining, guess_history, is_over, and current state
-  it "should initiate and set the following attributes: secret_word, guess_remaining, is_over, and current_state" do
+  # Test initiate method to have set attributes secret_word, guess_remaining, guess_history, is_over, and puzzle
+  it "should initiate and set the following attributes: secret_word, guess_remaining, is_over, and puzzle" do
     expect(game).to have_attributes(
       :secret_word => 'kendy',
       :guess_allowed => 'kendy'.length,
       :guess_count => 0,
       :guess_history => [],
       :is_over => false,
-      :current_state => ['_','_','_','_','_']
+      :puzzle => ['_','_','_','_','_']
       )
   end
 
