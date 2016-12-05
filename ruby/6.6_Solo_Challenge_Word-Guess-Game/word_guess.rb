@@ -25,7 +25,7 @@ class WordGuessGame
     @guess_count = 0
     @guess_history = []
     @is_over = false
-    @current_state = ('_' * secret_word.length).split('').join(' ')
+    @current_state = ('_' * secret_word.length).split('')
   end
 
   # Instance method to guess letter 
@@ -41,20 +41,30 @@ class WordGuessGame
   #                 'Great job! You've won'
   #                 if not, check IF we still have any more guesses? If no more 
   #                     set is_over to true
+  #       call print puzzle
   #     output:  a string
   def guess_letter(letter)
     if !guess_history.index(letter)
       @guess_count += 1
       @guess_history << letter
     end
-
+    # @secret_word.length.times do |index|
+    #   if @secret_word.split('')[index] == letter
+    #     @current_state.split(' ')[index] = letter
+    #   end
+    # end
+    # print_puzzle
   end
+
   # Instance method to print current state
   # input: None
   # steps: 
   #     1). divider to set it apart from other outputs
   #     2). puts on the current state of the word puzzle
   # output:  a string
+  def print_puzzle
+
+  end
 end
 
 # USER INTERFACE / DRIVER CODES

@@ -24,13 +24,8 @@ describe WordGuessGame do
       :guess_count => 0,
       :guess_history => [],
       :is_over => false,
-      :current_state => '_ _ _ _ _'
+      :current_state => ['_','_','_','_','_']
       )
-  end
-
-  # Allow guesser to input letter string as guesses and it will return a string showing the current state of the blank word puzzle
-  it "should return a letter string showing the current state of the blank word puzzle every time the user guesses" do
-    expect(game.guess_letter('e')).to eq '_ e _ _ _'
   end
 
   # Keep track of each guess by the user and save it into an array and does not allow repeated letters
@@ -41,10 +36,6 @@ describe WordGuessGame do
     expect(game.guess_history).to eq ['e','d']
   end
 
-  # test to make sure no two letter string are entered into the array
-  # it "doesn't push the letter string into an array if user enter a repeated input" do 
-  # end
-
   # Increase the guess counter every time the user enter an input but does not increase when guesses were repeated
   it "increases the guess counter, when user enter a new input" do 
     game.guess_letter('e')
@@ -52,6 +43,17 @@ describe WordGuessGame do
     game.guess_letter('d')
     expect(game.guess_count).to eq 2
   end
+
+  # Allow guesser to input letter string as guesses and it will return a string showing the current state of the blank word puzzle
+  it "should return a letter string showing the current state of the blank word puzzle every time the user guesses" do
+    game.guess_letter('e')
+    expect(game.print_puzzle).to eq '_ e _ _ _'
+  end
+
+  # test to make sure no two letter string are entered into the array
+  # it "doesn't push the letter string into an array if user enter a repeated input" do 
+  # end
+
 
   # Repeated guesses does not count against remaining guesses
   # it "doesn't increase the guess counter when user enter a repeated input" do 
