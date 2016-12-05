@@ -69,13 +69,13 @@ describe WordGuessGame do
   end
 
   # User get a congratulatory message if they win
-  it "returns a string when the user wins" do 
+  # it "returns a string when the user wins" do 
 
-  end
+  # end
 
   # User get a taunting message if they lose
-  it "returns a string when the user loses" do
+  # it "returns a string when the user loses" do
 
-  end
+  # end
 
 end

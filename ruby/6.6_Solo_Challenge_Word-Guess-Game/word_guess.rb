@@ -3,8 +3,12 @@
   # class for WordGuessGame
 class WordGuessGame
   # Getter method on instance variable secret_word
-  attr_reader :secret_word, :guess_remaining, :is_over, :current_state
-  # Getter and Setter method on instance variable guess_remaining and is_over
+  attr_reader :secret_word, 
+              :guess_allowed,
+              :guess_count,
+              :guess_history, 
+              :is_over, 
+              :current_state
 
   # Instance method to initialize
   #     input: a string
@@ -17,10 +21,11 @@ class WordGuessGame
   #     output:  a string
   def initialize(secret_word)
     @secret_word = secret_word
-    @guess_remaining = secret_word.length
+    @guess_allowed = secret_word.length
+    @guess_count = 0
+    @guess_history = []
     @is_over = false
     @current_state = ('_' * secret_word.length).split('').join(' ')
-    # ('_' * secret_word.length).split('').join('')
   end
 
   # Instance method to guess letter 
@@ -28,7 +33,7 @@ class WordGuessGame
   #     steps: 
   #         1). IF letter was not guessed 
   #                 - enter the letter to the 'guess history' instance variable
-  #                 - decrease guess_remaining by 1
+  #                 - increase guess_count by 1
   #         2). Iterate over the secret word using string#times method
   #                 - convert secret word to an array by using a split method
   #                 - check if each array value equals to the letter, if so, use that same index number to update the word puzzle result
@@ -37,7 +42,13 @@ class WordGuessGame
   #                 if not, check IF we still have any more guesses? If no more 
   #                     set is_over to true
   #     output:  a string
+  def guess_letter(letter)
+    if !guess_history.index(letter)
+      @guess_count += 1
+      @guess_history << letter
+    end
 
+  end
   # Instance method to print current state
   # input: None
   # steps: 
