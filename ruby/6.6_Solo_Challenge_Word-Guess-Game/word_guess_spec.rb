@@ -14,7 +14,18 @@ require_relative 'word_guess'
 # describe block for testing WordGuessGame class
 describe WordGuessGame do
   # Initiate a WordGuessGame class for testing
+  let(:game){WordGuessGame.new('kendy')}
   
+  # Test initiate method to have set attributes secret_word, guess_remaining, guess_history, is_over, and current state
+  it "should initiate and set the following attributes: secret_word, guess_remaining, is_over, and current_state" do
+    expect(game).to have_attributes(
+      :secret_word => 'kendy',
+      :guess_remaining => 'kendy'.length,
+      :is_over => false,
+      :current_state => '_ _ _ _ _'
+      )
+  end
+
   # Allow one user to input a word string as the secret word and save that word into the instance variable
   it "should return the string as the value of the attribute @secret_word entered by the user" do
 

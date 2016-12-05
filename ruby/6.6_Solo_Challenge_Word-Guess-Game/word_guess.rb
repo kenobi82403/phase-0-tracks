@@ -3,6 +3,7 @@
   # class for WordGuessGame
 class WordGuessGame
   # Getter method on instance variable secret_word
+  attr_reader :secret_word, :guess_remaining, :is_over, :current_state
   # Getter and Setter method on instance variable guess_remaining and is_over
 
   # Instance method to initialize
@@ -14,6 +15,13 @@ class WordGuessGame
   #         3). Instance variable 'is_over' equal to false
   #         4). Instance variable 'word puzzle' equal to underscores equal to the length of the word will need to turn secret word to array and call a join method on it to separate by spaces
   #     output:  a string
+  def initialize(secret_word)
+    @secret_word = secret_word
+    @guess_remaining = secret_word.length
+    @is_over = false
+    @current_state = ('_' * secret_word.length).split('').join(' ')
+    # ('_' * secret_word.length).split('').join('')
+  end
 
   # Instance method to guess letter 
   #     input: a letter string
