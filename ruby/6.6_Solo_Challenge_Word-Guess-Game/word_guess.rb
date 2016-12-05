@@ -45,16 +45,34 @@ class WordGuessGame
   #       call print puzzle
   #     output:  a string
   def guess_letter(letter)
+
     if !guess_history.index(letter)
       @guess_count += 1
       @guess_history << letter
-    end
-    @secret_word.length.times do |index|
-      if @secret_word.split('')[index] == letter
-        @puzzle[index] = letter
+      @secret_word.length.times do |index|
+        if @secret_word.split('')[index] == letter
+          @puzzle[index] = letter
+       end
       end
     end
+
+    check_guess_count
     print_puzzle
+  end
+
+  # Instance method to check guess count
+  def check_guess_count
+    if @guess_count >= 5
+      @is_over = true
+      "Sorry, you have used up your guess allowance! :( \n Better luck next time!"
+    end
+  end
+
+  # Instance method to check if won
+  def check_if_won
+    if @puzzle.join('') == @secret_word
+      "Woohoo! You've won! Good job playa!"
+    end
   end
 
   # Instance method to print current state
@@ -70,9 +88,12 @@ end
 
 # USER INTERFACE / DRIVER CODES
 # game = WordGuessGame.new('kendy')
-# game.guess_letter('e')
-# game.guess_letter('e')
+# game.guess_letter('a')
+# game.guess_letter('b')
+# game.guess_letter('c')
 # game.guess_letter('d')
+# game.guess_letter('e')
+# game.guess_letter('f')
 # p game.guess_history
 # p game.guess_count
 # puts game.print_puzzle == '_ e _ d _'

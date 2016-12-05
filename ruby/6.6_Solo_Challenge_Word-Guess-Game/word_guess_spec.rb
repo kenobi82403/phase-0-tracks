@@ -41,7 +41,8 @@ describe WordGuessGame do
     game.guess_letter('e')
     game.guess_letter('e')  
     game.guess_letter('d')
-    expect(game.guess_count).to eq 2
+    game.guess_letter('w')
+    expect(game.guess_count).to eq 1
   end
 
   # Allow guesser to input letter string as guesses and it will return a string showing the current state of the blank word puzzle
@@ -71,13 +72,24 @@ describe WordGuessGame do
   end
 
   # User get a congratulatory message if they win
-  # it "returns a string when the user wins" do 
-
-  # end
+  it "returns a string when the user wins" do 
+    game.guess_letter('k')
+    game.guess_letter('e')
+    game.guess_letter('n')
+    game.guess_letter('d')
+    game.guess_letter('y')
+    expect(game.check_if_won).to eq "Woohoo! You've won! Good job playa!"
+  end
 
   # User get a taunting message if they lose
-  # it "returns a string when the user loses" do
-
-  # end
+  it "returns a string when the user loses" do
+    game.guess_letter('a')
+    game.guess_letter('b')
+    game.guess_letter('c')
+    game.guess_letter('d')
+    game.guess_letter('e')
+    game.guess_letter('f')
+    expect(game.check_guess_count).to eq "Sorry, you have used up your guess allowance! :( \n Better luck next time!"
+  end
 
 end
