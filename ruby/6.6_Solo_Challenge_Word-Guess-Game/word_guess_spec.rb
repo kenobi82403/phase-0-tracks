@@ -20,45 +20,52 @@ describe WordGuessGame do
   it "should initiate and set the following attributes: secret_word, guess_remaining, is_over, and current_state" do
     expect(game).to have_attributes(
       :secret_word => 'kendy',
-      :guess_remaining => 'kendy'.length,
+      :guess_allowed => 'kendy'.length,
+      :guess_count => 0,
+      :guess_history => [],
       :is_over => false,
       :current_state => '_ _ _ _ _'
       )
   end
 
-  # Allow one user to input a word string as the secret word and save that word into the instance variable
-  it "should return the string as the value of the attribute @secret_word entered by the user" do
-
-  end
-
   # Allow guesser to input letter string as guesses and it will return a string showing the current state of the blank word puzzle
   it "should return a letter string showing the current state of the blank word puzzle every time the user guesses" do
-
+    expect(game.guess_letter('e')).to eq '_ e _ _ _'
   end
 
-  # Keep track of each guess by the user and save it into an array
+  # Keep track of each guess by the user and save it into an array and does not allow repeated letters
   it "push the letter string into an array when user enter a new input" do 
-
+    game.guess_letter('e')
+    game.guess_letter('e')  
+    game.guess_letter('d')
+    expect(game.guess_history).to eq ['e','d']
   end
 
-  # Increase the guess counter every time the user guess wrong
-  it "doesn't push the letter string into an array if user enter a repeated input" do 
+  # test to make sure no two letter string are entered into the array
+  # it "doesn't push the letter string into an array if user enter a repeated input" do 
+  # end
 
-  end
-
-  # Increase the guess counter every time the user guess wrong
-  it "increases the guess counter, when user enter a new incorrect input" do 
-
+  # Increase the guess counter every time the user enter an input but does not increase when guesses were repeated
+  it "increases the guess counter, when user enter a new input" do 
+    game.guess_letter('e')
+    game.guess_letter('e')  
+    game.guess_letter('d')
+    expect(game.guess_count).to eq 2
   end
 
   # Repeated guesses does not count against remaining guesses
-  it "doesn't increase the guess counter when user enter a repeated input" do 
-
-  end
+  # it "doesn't increase the guess counter when user enter a repeated input" do 
+  # end
 
   # Guesses are limited to the length of the secret word
   it "stops the game when the user used up its guess allowance" do 
-
+    game.guess_letter('a')
+    game.guess_letter('b')
+    game.guess_letter('c')
+    game.guess_letter('d')
+    game.guess_letter('e')
+    game.guess_letter('f')
+    expect(game.is_over).to eq true
   end
 
   # User get a congratulatory message if they win
