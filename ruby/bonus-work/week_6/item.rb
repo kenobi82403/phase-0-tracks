@@ -21,10 +21,8 @@ class Item
   end
 end
 
-item = Item.new("cardboard box", "brown", 0)
+# item = Item.new("cardboard box", "brown", 0)
+# puts item
 
-puts item
-
-item2 = Item.new("piano", "black", 1000)
-
-puts item2
+# item2 = Item.new("piano", "black", 1000)
+# puts item2
