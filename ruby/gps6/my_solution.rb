@@ -91,20 +91,26 @@ end
 # california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
 # california.virus_effects
 
-alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
-alaska.virus_effects
+# alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
+# alaska.virus_effects
 
 # Release 4
 # iterate over each key in the STATE_DATA hash
 # for each key, we will initiate a new instance and pass in the name, population_density, and population
 # we'll call .virus_effects on the new instance
-# STATE_DATA.each_key do |state|
-# VirusPredictor.new(
-#   state,
-#   STATE_DATA[state][:population_density], 
-#   STATE_DATA[state][:population]
-#   ).virus_effects
-# end
+STATE_DATA.each_key do |state|
+VirusPredictor.new(
+  state,
+  STATE_DATA[state][:population_density], 
+  STATE_DATA[state][:population]
+  ).virus_effects
+end
 
 #=======================================================================
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file? The '=>' way of hash syntax is the literal way of writing the hash and the 'key:' method is a shortcut where ruby knows that you want to use a symbol ':key' as the accessor and it automatically appends => in the middle of the key: and value.
+# What does require_relative do? How is it different from require? require_relatives loads in a file from your working directory. require searches through your ruby $LOAD_PATH, pretty much there your Ruby Root files are to search for your file and if you don't specify your directory it won't look into your working directory.
+# What are some ways to iterate through a hash? Ruby gives you many ways, either through a .each method, .each_key method, or .each_pair method etc.
+# When refactoring virus_effects, what stood out to you about the variables, if anything? It wasn't apparent at first but later on i realized the variables are instance variables and it is visible within the instance so technically you won't need to pass it in if the method is being called within the class so you can just use the instance variable as is and won't need to pass in the data.
+# What concept did you most solidify in this challenge? The concept on refactoring and scope.
