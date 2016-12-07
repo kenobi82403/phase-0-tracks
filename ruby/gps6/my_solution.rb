@@ -18,52 +18,47 @@ class VirusPredictor
     @population_density = population_density
   end
 
-# Method to output data for each states
-# Input: 
-    # 1). an array of state name
-# def print_state_effects[]
-
   # this method acts a liaison between the user and private methods and will return their outputs
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    # speed_of_spread(@population_density, @state)
+    predicted_deaths
   end
 
   private
 
   # this method takes in data to predict the number of deaths and prints a summary statement
-  def predicted_deaths(population_density, population, state)
     # predicted deaths is solely based on population density
-    if @population_density >= 200
+  def predicted_deaths
+    case @population_density
+    when 200..Float::INFINITY
       number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
+    when 150..200
       number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
+    when 100..150
       number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
+    when 50..100
       number_of_deaths = (@population * 0.1).floor
     else
       number_of_deaths = (@population * 0.05).floor
     end
 
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-    speed_of_spread(population_density, state)
-
+    speed_of_spread
   end
 
   # this method takes in data to predict the speed of spread of the virus and prints a summary statement
-  def speed_of_spread(population_density, state) #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
+  def speed_of_spread #in months
     speed = 0.0
 
-    if @population_density >= 200
+    case @population_density
+    when 200..Float::INFINITY
       speed += 0.5
-    elsif @population_density >= 150
+    when 150..200
       speed += 1
-    elsif @population_density >= 100
+    when 100..150
       speed += 1.5
-    elsif @population_density >= 50
+    when 50..100
       speed += 2
     else
       speed += 2.5
