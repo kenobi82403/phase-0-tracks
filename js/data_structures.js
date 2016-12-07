@@ -24,9 +24,9 @@ function Cars(brand, type, color, speed) {
   this.maxSpeed = speed;
   this.acceleration = function() {
     if(this.maxSpeed > 100) {
-      console.log('Keep going!');
+      return 'Keep going!';
     } else {
-      console.log('Need more power!');
+      return 'Need more power!';
     }
   };
 }
@@ -36,11 +36,11 @@ console.log(
   bmw.brand,
   bmw.type,
   bmw.color,
-  bmw.maxSpeed
+  bmw.maxSpeed,
+  bmw.acceleration()
   );
 
   bmw.acceleration();
-
 
 
 
