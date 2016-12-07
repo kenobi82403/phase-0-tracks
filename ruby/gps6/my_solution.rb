@@ -12,10 +12,33 @@ require_relative 'state_data'
 
 class VirusPredictor
   # the default method which runs when you create a new instance of this class and will assign the values to their respective instance variable
+  # created new hash to store death and speed ratios
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
     @population_density = population_density
+    @effect_ratio = {
+      (0..49) => {
+        death_ratio: 0.05,
+        speed_ratio: 2.5
+      },
+      (50..100) => {
+        death_ratio: 0.1,
+        speed_ratio: 2    
+      },
+      (101..150) => {
+        death_ratio: 0.2,
+        speed_ratio: 1.5    
+      },
+      (151..200) => {
+        death_ratio: 0.3,
+        speed_ratio: 1    
+      },
+      (201..Float::INFINITY) => {
+        death_ratio: 0.4,
+        speed_ratio: 0.5    
+      }
+    }
   end
 
   # this method acts a liaison between the user and private methods and will return their outputs
@@ -25,46 +48,28 @@ class VirusPredictor
 
   private
 
-  # this method takes in data to predict the number of deaths and prints a summary statement
-    # predicted deaths is solely based on population density
+  # this method iterate over each key of effect_ratio hash based on the state's population's density and return the appropriate death_ratio. It outputs a string to communicate the result along with the result of the method 'speed_of_spread' 
   def predicted_deaths
-    case @population_density
-    when 200..Float::INFINITY
-      number_of_deaths = (@population * 0.4).floor
-    when 150..200
-      number_of_deaths = (@population * 0.3).floor
-    when 100..150
-      number_of_deaths = (@population * 0.2).floor
-    when 50..100
-      number_of_deaths = (@population * 0.1).floor
-    else
-      number_of_deaths = (@population * 0.05).floor
+    @effect_ratio.each_key do |pop_dens|
+      if pop_dens.cover?(@population_density)
+        @number_of_deaths = (@population * @effect_ratio[pop_dens][:death_ratio]).to_i
+      end
     end
 
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+    print "#{@state} will lose #{@number_of_deaths} people in this outbreak"
+
     speed_of_spread
   end
 
-  # this method takes in data to predict the speed of spread of the virus and prints a summary statement
-    # We are still perfecting our formula here. The speed is also affected
-    # by additional factors we haven't added into this functionality.
+  # this method iterate over each key of effect_ratio hash based on the state's population's density and return the appropriate speed_ratio. It outputs a string to communicate the result.
   def speed_of_spread #in months
-
-    case @population_density
-    when 200..Float::INFINITY
-      speed = 0.5
-    when 150..200
-      speed = 1
-    when 100..150
-      speed = 1.5
-    when 50..100
-      speed = 2
-    else
-      speed = 2.5
+    @effect_ratio.each_key do |pop_dens|
+      if pop_dens.cover?(@population_density)
+        @speed = @effect_ratio[pop_dens][:speed_ratio]
+      end
     end
 
-    puts " and will spread across the state in #{speed} months.\n\n"
-
+    puts " and will spread across the state in #{@speed} months.\n\n"
   end
 
 end
