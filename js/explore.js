@@ -12,5 +12,14 @@ function reverse(string) {
 
 // Driver Code
 
-console.log(reverse("Hello")); // olleH
-console.log(reverse("Kendy")); // ydenK
+var name = "Kendy";
+
+var reversedHello = reverse("Hello"); // olleH
+var reversedName = reverse(name); // ydenK
+
+// If random number is less than 1 return my name, if not then say hello
+if (Math.random()*2 < 1) {
+  console.log(reverse(name));
+} else {
+  console.log(reverse("Hello"));
+}
