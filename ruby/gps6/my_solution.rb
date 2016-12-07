@@ -26,7 +26,7 @@ class VirusPredictor
   # this method acts a liaison between the user and private methods and will return their outputs
   def virus_effects
     predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    # speed_of_spread(@population_density, @state)
   end
 
   private
@@ -47,6 +47,7 @@ class VirusPredictor
     end
 
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+    speed_of_spread(population_density, state)
 
   end
 
@@ -95,20 +96,20 @@ end
 # california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
 # california.virus_effects
 
-# alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
-# alaska.virus_effects
+alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
+alaska.virus_effects
 
 # Release 4
 # iterate over each key in the STATE_DATA hash
-STATE_DATA.each_key do |state|
- # for each key, we will initiate a new instance and pass in the name, population_density, and population
- VirusPredictor.new(
-  state,
-  STATE_DATA[state][:population_density], 
-  STATE_DATA[state][:population]
-  ).virus_effects
- # we'll call .virus_effects on the new instance
-end
+# for each key, we will initiate a new instance and pass in the name, population_density, and population
+# we'll call .virus_effects on the new instance
+# STATE_DATA.each_key do |state|
+# VirusPredictor.new(
+#   state,
+#   STATE_DATA[state][:population_density], 
+#   STATE_DATA[state][:population]
+#   ).virus_effects
+# end
 
 #=======================================================================
 # Reflection Section
