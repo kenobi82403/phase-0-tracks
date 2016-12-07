@@ -49,19 +49,18 @@ class VirusPredictor
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
   def speed_of_spread #in months
-    speed = 0.0
 
     case @population_density
     when 200..Float::INFINITY
-      speed += 0.5
+      speed = 0.5
     when 150..200
-      speed += 1
+      speed = 1
     when 100..150
-      speed += 1.5
+      speed = 1.5
     when 50..100
-      speed += 2
+      speed = 2
     else
-      speed += 2.5
+      speed = 2.5
     end
 
     puts " and will spread across the state in #{speed} months.\n\n"
