@@ -38,13 +38,24 @@ function keyValueMatch(obj1, obj2){
   return false;
 }
 
+// Release 2: Generate Random Test Data
+// Coming up with examples to test our code with can be tiresome. Let's make a function do all the work instead.
+
+// DO THE THING
+// Write a function that takes an integer for length, and builds and returns an array of strings of the given length. So if we ran your function with an argument of 3, we would get an array of 3 random words back (the words don't have to be actual sensical English words -- "nnnnfph" totally counts). The words should be of randomly varying length, with a minimum of 1 letter and a maximum of 10 letters. (This involves a new trick, generating a random number, that you'll have to look up, but the solution on how to do so is relatively straightforward.)
+// function random test data, takes an integer as a parameter
+// variable for result, letters
+// variable length set to an integer that is RANDOM from 1 to 10
+// Loop and set it to the length variable
+//  - grab a random letter and concat to result
+// returns an array of strings
+
 // DRIVER CODE
 
 // test longest word algo
 var testArray = ["Driver", "Duck", "Pirate's Booty", "Aged White Cheddar", "Glutten", "Free", "Trick"];
 
 console.log(longestWord(testArray) == "Aged White Cheddar");
-
 
 // test key-value match algo
 var obj1 = {name: "Steven", age: 54};
@@ -55,3 +66,6 @@ var obj4 = {color: "blue", dog: "bobbie", name: "bobbe", age: 28};
 console.log(keyValueMatch(obj1, obj2) == true);
 console.log(keyValueMatch(obj1, obj3) == false);
 console.log(keyValueMatch(obj3, obj4) == true);
+
+// test random test data
+// Add driver code that does the following 10 times: generates an array, prints the array, feeds the array to your "longest word" function, and prints the result.
