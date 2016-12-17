@@ -1,0 +1,17 @@
+sqlite> SELECT reviews.stars, reviews.comment, businesses.name, users.first_name, users.last_name FROM reviews
+   ...> INNER JOIN businesses ON reviews.business_id = businesses.id
+   ...> INNER JOIN users ON reviews.user_id = users.id;
+stars       comment       name                          first_name  last_name
+----------  ------------  ----------------------------  ----------  ----------
+5           Great pasta!  Grundy Hollow Wedding Chapel  Mandy       Kaling
+4           Not bad coul  Amir's Towing                 Bradford    Pitt
+4           Love their s  Grundy Hollow Wedding Chapel  Bradford    Pitt
+3           Great music   The Beagle Nightclub          Angela      Jolie
+
+
+sqlite> SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews
+   ...> INNER JOIN businesses ON reviews.business_id = businesses.id
+   ...> INNER JOIN users ON reviews.user_id = users.id
+   ...> WHERE businesses.id = 1;
+Mandy|Kaling|Grundy Hollow Wedding Chapel|5|Great pasta!
+Bradford|Pitt|Grundy Hollow Wedding Chapel|4|Love their steak!
