@@ -1,0 +1,83 @@
+1). Display the information in one table (either table is fine).
+
+    sqlite> SELECT * FROM pets;
+    id          name        breed       family_id
+    ----------  ----------  ----------  ----------
+    1           Tucker      Chihuahua   2
+    2           Bailey      Japanese C  2
+    3           Sophie      Beagle      3
+    4           Duke        Pitbull     1
+    5           Toby        Shiba Inu   3
+
+2). Update an item that meets some condition (you can choose a condition that makes sense).
+
+    sqlite> UPDATE pets
+       ...> SET breed = "Golden Retriever"
+       ...> WHERE id = 5;
+    sqlite> SELECT * FROM pets;
+    id          name        breed       family_id
+    ----------  ----------  ----------  ----------
+    1           Tucker      Chihuahua   2
+    2           Bailey      Japanese C  2
+    3           Sophie      Beagle      3
+    4           Duke        Pitbull     1
+    5           Toby        Golden Ret  3
+
+3). Display the information in both tables using one query.
+
+    sqlite> SELECT *
+       ...> FROM pets
+       ...> INNER JOIN families
+       ...> ON pets.family_id = families.id;
+    id          name        breed       family_id   id          family_name  rep_first_name  rep_last_name
+    ----------  ----------  ----------  ----------  ----------  -----------  --------------  -------------
+    1           Tucker      Chihuahua   2           2           Schweitzer   Ryan            Schweitzer
+    2           Bailey      Japanese C  2           2           Schweitzer   Ryan            Schweitzer
+    3           Sophie      Beagle      3           3           Jefferson    Adam            Jefferson
+    4           Duke        Pitbull     1           1           Lam          Michael         Lam
+    5           Toby        Golden Ret  3           3           Jefferson    Adam            Jefferson
+
+4). Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+    sqlite> SELECT p.name, p.breed, f.family_name "family name", f.rep_first_name "owner first name"
+       ...> FROM pets p
+       ...> INNER JOIN families f
+       ...> ON p.family_id = f.id;
+    name        breed       family name  owner first name
+    ----------  ----------  -----------  ----------------
+    Tucker      Chihuahua   Schweitzer   Ryan
+    Bailey      Japanese C  Schweitzer   Ryan
+    Sophie      Beagle      Jefferson    Adam
+    Duke        Pitbull     Lam          Michael
+    Toby        Golden Ret  Jefferson    Adam
+
+5). Delete an item that meets some condition (you can choose a condition that makes sense).
+
+    sqlite> DELETE FROM pets
+       ...> WHERE name = "Sophie";
+    sqlite> SELECT * FROM pets;
+    id          name        breed       family_id
+    ----------  ----------  ----------  ----------
+    1           Tucker      Chihuahua   2
+    2           Bailey      Japanese C  2
+    4           Duke        Pitbull     1
+    5           Toby        Golden Ret  3
+
+
+JOINS 
+
+    sqlite> SELECT *
+       ...> FROM pets
+       ...> RIGHT OUTER JOIN families
+       ...> ON pets.family_id = families.id;
+    Error: RIGHT and FULL OUTER JOINs are not currently supported
+    sqlite> SELECT *
+       ...> FROM pets
+       ...> LEFT OUTER JOIN families
+       ...> ON pets.family_id = families.id;
+    id          name        breed       family_id   id          family_name  rep_first_name  rep_last_name
+    ----------  ----------  ----------  ----------  ----------  -----------  --------------  -------------
+    1           Tucker      Chihuahua   2           2           Schweitzer   Ryan            Schweitzer
+    2           Bailey      Japanese C  2           2           Schweitzer   Ryan            Schweitzer
+    4           Duke        Pitbull     1           1           Lam          Michael         Lam
+    5           Toby        Golden Ret  3           3           Jefferson    Adam            Jefferson
