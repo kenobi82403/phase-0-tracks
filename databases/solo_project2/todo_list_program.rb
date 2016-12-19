@@ -1,5 +1,29 @@
-require 'sqlite3'
-require 'faker'
+# require gems
+require 'sqlite3' # for sql database
+require 'faker'  # help create fake datas
+
+# create SQLite3 database for todo program
+db = SQLite3::Database.new("todo.db")
+
+# string delimiter for creating table schemas
+# one to many relationship. One owner can have many items.
+create_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS owners
+  (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255)
+  );
+  
+  CREATE TABLE IF NOT EXISTS items
+  (
+    item VARCHAR(255),
+    owner_id INT REFERENCES owners(id)
+  );
+SQL
+
+# create a todo program if not already created
+db.execute(create_table_cmd)
+
 
 class TodoList
   attr_reader :name, :list
@@ -55,3 +79,4 @@ class TodoList
 
 end
 
+# USER INTERFACE
