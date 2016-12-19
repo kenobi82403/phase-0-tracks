@@ -1,81 +1,55 @@
-# Write a Ruby program that uses persistent data to make your life better, or makes someone else's life better. Find several opportunities to try something not explicitly shown in the video. Can users create data? Retrieve it? Manipulate it? It's up to you. Push yourself, and decide with integrity when you are finished. Note that you do not need to use classes in this assignment -- keeping a class instance and a database row in sync is a lot of work, so that might be too much to tackle.
-
-# Require SQLite3 gem
-# Require faker gem
-
-# Create Class User List
-# Reader for array and name attribute
-
-# A method to set the name of the list owner.
-# Create an array empty array
-# Input: string - user name
-# Output: Boolean
-
-# A method to add item to list
-#   Input is a string
-#   Push item to list array
-#   call read method
-#   Output: Boolean
-
-# A method to read the list
-#   Prints the array on console
-
-# A method to delete item from list
-#   Input is an integer
-#   Declare temp array
-#   Loop through array and copy to new temp array
-#     Skip item if it matches integer ( each method)
-#   Save temp array to master list array
-#   Call read method
-#   Output: Boolean
-
-# A method to update item on list
-#   Input is an integer and a string
-#   Declare temp array
-#   Loop through list array and copy to new temp array
-#     If matches integer then update item (map bang!)
-#   Call read method
-#   Output: boolean
-
-# User Interface
-
-# Welcome to program
-#   Access an existing list or create a new list
-
-# Test CRUD
-
-# Allow user to create their own profile
-# Allow user to create a new list
-# Allow user to add item to list
-# Allow user to mark complete or incomplete
-# Allow user to delete item from list
-# Allow user to update item on list
-
+require 'sqlite3'
+require 'faker'
 
 class TodoList
-  attr_accessor :get_items
+  attr_reader :name, :list
 
-  def initialize(list_arr)
-    @get_items = list_arr
+  def initialize(name)
+    @name = name
+    @list = []
   end
-
+  
+# Add item to list
   def add_item(item)
-    @get_items << item
+    @list << item
+    print(@list)
   end
 
-  def delete_item(item)
-    new_array = []
-    @get_items.each do |index|
+# Update item on list
+  def update_item(item)
+    temp_list = []
+    @list.each do |index|
       if index != item
         new_array << index
       end
     end
+    @list = temp_list
+    print(@list)
+  end  
 
-    @get_items = new_array
+# Remove item from list
+  def remove_item(item_to_rm)
+    temp_list = []
+    @list.each do |item|
+      if item != item_to_rm
+        temp_list << item
+      end
+    end
+    @list = temp_list
+    print(@list)
   end
 
-  def get_item(index)
-    @get_items[index]
+# Print List
+  def print_list(list)
+   puts "Current List:"
+   if(@list.length < 1) 
+     puts "Good job! You have no items on your list"
+   else 
+     for i in 0...@list.length
+       puts "#{i+1}: #{@list[i]}"
+     end
+   end
   end
 
 end
+

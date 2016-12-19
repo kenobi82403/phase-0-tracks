@@ -7,26 +7,29 @@
 # Allow user to delete item from list
 # Allow user to update item on list
   
-require_relative 'todo_list'
+require_relative 'todo_list_program'
 
 describe TodoList do
-  let(:list) { TodoList.new(["do the dishes", "mow the lawn"]) }
-
-  it "stores the list items given on initialization" do
-    expect(list.get_items).to eq ["do the dishes", "mow the lawn"]
-  end
+  let(:joe_list) { TodoList.new('Joe') }
 
   it "adds an item to the list" do
-    list.add_item("mop")
-    expect(list.get_items).to eq ["do the dishes", "mow the lawn", "mop"]
+    joe_list.add_item("do the dishes")
+    joe_list.add_item("mow the lawn")
+    expect(joe_list.list).to eq ["do the dishes", "mow the lawn"]
   end
 
-  it "deletes an item" do
-    list.delete_item("do the dishes")
-    expect(list.get_items).to eq ["mow the lawn"]
+  it "removes an item to the list" do 
+    joe_list.add_item("do the dishes")
+    joe_list.add_item("mow the lawn")
+    joe_list.remove_item("mow the lawn")
+    expect(joe_list.list).to eq ["do the dishes"]
   end
 
-  it "retrieves an item by index" do
-    expect(list.get_item(0)).to eq "do the dishes"
+  it "updates an item to the list" do 
+    joe_list.add_item("do the dishes")
+    joe_list.add_item("mow the lawn")
+    joe_list.update_item("take out trash")
+    expect(joe_list.list).to eq ["do the dishes", "take out trash"]
   end
+
 end
