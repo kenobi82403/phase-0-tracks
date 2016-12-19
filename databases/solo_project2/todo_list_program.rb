@@ -12,23 +12,12 @@ class TodoList
 # Add item to list
   def add_item(item)
     @list << item
-    print(@list)
+    print_list(@list)
   end
 
-# Update item on list
-  def update_item(item)
-    temp_list = []
-    @list.each do |index|
-      if index != item
-        new_array << index
-      end
-    end
-    @list = temp_list
-    print(@list)
-  end  
-
 # Remove item from list
-  def remove_item(item_to_rm)
+  def remove_item(index_to_rm)
+    item_to_rm = @list[index_to_rm-1]
     temp_list = []
     @list.each do |item|
       if item != item_to_rm
@@ -36,8 +25,21 @@ class TodoList
       end
     end
     @list = temp_list
-    print(@list)
+    print_list(@list)
   end
+
+# Update item on list
+  def update_item(index_to_update, new_item)
+    item_to_update = @list[index_to_update-1]
+    @list.map! do |item|
+      if item == item_to_update
+        item = new_item
+      else 
+        item
+      end
+    end
+    print_list(@list)
+  end  
 
 # Print List
   def print_list(list)

@@ -21,14 +21,14 @@ describe TodoList do
   it "removes an item to the list" do 
     joe_list.add_item("do the dishes")
     joe_list.add_item("mow the lawn")
-    joe_list.remove_item("mow the lawn")
+    joe_list.remove_item(2)
     expect(joe_list.list).to eq ["do the dishes"]
   end
 
   it "updates an item to the list" do 
     joe_list.add_item("do the dishes")
     joe_list.add_item("mow the lawn")
-    joe_list.update_item("take out trash")
+    joe_list.update_item(2, "take out trash")
     expect(joe_list.list).to eq ["do the dishes", "take out trash"]
   end
 
