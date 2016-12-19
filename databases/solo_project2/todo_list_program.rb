@@ -52,3 +52,30 @@
 # Allow user to update item on list
 
 
+class TodoList
+  attr_accessor :get_items
+
+  def initialize(list_arr)
+    @get_items = list_arr
+  end
+
+  def add_item(item)
+    @get_items << item
+  end
+
+  def delete_item(item)
+    new_array = []
+    @get_items.each do |index|
+      if index != item
+        new_array << index
+      end
+    end
+
+    @get_items = new_array
+  end
+
+  def get_item(index)
+    @get_items[index]
+  end
+
+end
