@@ -7,13 +7,15 @@ db = SQLite3::Database.new("todo.db")
 
 # string delimiter for creating table schemas
 # one to many relationship. One owner can have many items.
-create_table_cmd = <<-SQL
+owner_table = <<-SQL
   CREATE TABLE IF NOT EXISTS owners
   (
     id INTEGER PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) NOT NULL
   );
-  
+SQL
+
+items_table = <<-SQL
   CREATE TABLE IF NOT EXISTS items
   (
     item VARCHAR(255),
@@ -22,15 +24,25 @@ create_table_cmd = <<-SQL
 SQL
 
 # create a todo program if not already created
-db.execute(create_table_cmd)
+db.execute(owner_table)
+db.execute(items_table)
 
 
 class TodoList
-  attr_reader :name, :list
-
-  def initialize(name)
+  attr_reader :name, :list, :db
+  
+  def initialize(name, db)
     @name = name
-    @list = []
+    @list = db.execute("
+      SELECT item
+      FROM items
+      INNER JOIN owners
+      ON items.owner_id = owners.id;
+    ")
+    @db = db
+    create_owner(@name)
+    # p @list.class
+    true
   end
   
 # Add item to list
@@ -77,6 +89,35 @@ class TodoList
    end
   end
 
+private
+
+  def create_owner(name)
+    @db.execute("
+        INSERT INTO owners (name)
+        VALUES (?)
+      ", [name])
+  end
+  
+  def retrieve_items()
+    
+  end
+
 end
 
 # USER INTERFACE
+# puts "Welcome to my to do list 1.0!"
+# puts "What would you like to do?"
+# puts "N - new list"
+# puts "A - access a list (currently not available)"
+# userinput = gets.chomp.downcase
+
+# if userinput == "n"
+#   puts "Great! What is your name?"
+#   user_name = gets.chomp.downcase
+#   list = TodoList.new(user_name)
+#   puts "Thanks #{user_name.capitalize}! Your list is initalized"
+# end
+
+# p list
+
+list = TodoList.new('kendy', db);
