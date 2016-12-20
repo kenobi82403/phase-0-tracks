@@ -28,11 +28,6 @@ SQL
 db.execute(owner_table)
 db.execute(items_table)
 
-#     @pk = db.execute("
-#       SELECT id
-#       FROM owners
-#       WHERE name = ?;
-#     ", [@name])[0]
   
 # Add item to list
 def add_item(db, item, pk)
@@ -93,30 +88,87 @@ end
 
 # USER INTERFACE
 
-# create_profile("kendy", "password", db)
-# add_item(db, "take out trash", 1)
-# add_item(db, "mop the floor", 1)
-# add_item(db, "wash the dishes", 1)
-# remove_item(db, 2, 1)
-# update_item(db, 2, "buy milk", 1)
-# update_item(db, 4, "clean the house", 1)
+def auth_user(name, password, db)
+  pass = db.execute("
+       SELECT id
+       FROM owners
+       WHERE name = ? 
+       AND password = ?
+    ", [name, password])[0]
 
+  if !pass
+    false
+  else
+    pass[0]
+  end
 
-# puts "Welcome to my to do list 1.0!"
-# puts "What would you like to do?"
-# puts "N - new list"
-# puts "A - access a list (currently not available)"
-# userinput = gets.chomp.downcase
+end
 
-# if userinput == "n"
-#   puts "Great! What is your name?"
-#   user_name = gets.chomp.downcase
-#   list = TodoList.new(user_name)
-#   puts "Thanks #{user_name.capitalize}! Your list is initalized"
+p auth_user("kendy", "password", db)
+
+# puts "Welcome to my to do list program 1.0!"
+
+# loop do
+#   puts "" 
+#   puts "What would you like to do?"
+#   puts "1 - create a new list"
+#   puts "2 - access an existing list"
+#   puts "3 - exit the program"
+#   puts "_" * 50
+#   puts ""
+
+#   user_input = gets.chomp.to_i
+
+#   case user_input
+#   when 1
+#     puts "Please enter a user name"
+#     user_name = gets.chomp.downcase
+#     puts "Please enter a password"
+#     user_pw = gets.chomp.downcase
+    
+#     create_profile(user_name, user_pw, db)
+
+#     pk = db.execute("
+#         SELECT 
+#       ")
+#     puts "Thanks #{user_name.capitalize}! Your list is initialized!"
+#     puts ""
+#   when 2
+
+#   when 3
+#     break
+#   end
+
+#   loop do
+#     puts ""
+#     puts "What would you like to do next?"
+#     puts "1 - add an item to your list"
+#     puts "2 - remove an item from your list"
+#     puts "3 - update an item on your list"
+#     puts "4 - print list"
+#     puts "5 - return to the main menu"
+#     puts ""
+
+#     user_action = gets.chomp.to_i
+#     case user_action
+#       when 1
+#         # add_item(db, "take out trash", 1)
+#       when 2
+#         # remove_item(db, 2, 1)
+
+#       when 3
+#         # update_item(db, 2, "buy milk", 1)
+
+#       when 4
+#         # print_list(db, pk)
+#       when 5
+#         break
+#       else
+#         "Invalid option.."
+#     end
+#   end
+
 # end
 
-# p list
 
-# list = TodoList.new('kendy', 'password', db);
-# list.add_item("wash dishes");
-# list.add_item("take trash out");
+
