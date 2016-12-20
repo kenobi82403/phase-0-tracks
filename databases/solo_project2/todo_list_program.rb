@@ -28,6 +28,13 @@ SQL
 db.execute(owner_table)
 db.execute(items_table)
 
+# Create user
+def create_profile(name, password, db)
+  db.execute("
+      INSERT INTO owners (name, password)
+      VALUES (?, ?);
+    ", [name, password])
+end
   
 # Add item to list
 def add_item(db, item, pk)
@@ -58,26 +65,22 @@ def update_item(db, index_to_update, new_item, pk)
     ", [new_item, item_to_update])  
 end  
 
-# Print List
+# Print the list
 def print_list(db, pk)
- list = retrieve_items(db, pk)
- puts "Current List:"
- if(list.length < 1) 
+  list = retrieve_items(db, pk)
+  puts
+  puts "Current List:"
+  if(list.length < 1) 
    puts "Good job! You have no items on your list"
- else 
+  else 
    for i in 0...list.length
      puts "#{i+1}: #{list[i]}"
    end
- end
+  end
+  puts
 end
 
-def create_profile(name, password, db)
-  db.execute("
-      INSERT INTO owners (name, password)
-      VALUES (?, ?);
-    ", [name, password])
-end
-
+# Retrieve Item on list
 def retrieve_items(db, pk)
   db.execute("
     SELECT item
@@ -86,8 +89,7 @@ def retrieve_items(db, pk)
   ", [pk])
 end
 
-# USER INTERFACE
-
+# Authenticate users
 def auth_user(name, password, db)
   pass = db.execute("
        SELECT id
@@ -101,74 +103,95 @@ def auth_user(name, password, db)
   else
     pass[0]
   end
-
 end
 
-p auth_user("kendy", "password", db)
 
-# puts "Welcome to my to do list program 1.0!"
+# USER INTERFACE
 
-# loop do
-#   puts "" 
-#   puts "What would you like to do?"
-#   puts "1 - create a new list"
-#   puts "2 - access an existing list"
-#   puts "3 - exit the program"
-#   puts "_" * 50
-#   puts ""
+puts "Welcome to my to do list program 1.0!"
 
-#   user_input = gets.chomp.to_i
+loop do
+  puts "" 
+  puts "What would you like to do?"
+  puts "1 - create a new list"
+  puts "2 - access an existing list"
+  puts "3 - exit the program"
+  puts "_" * 50
+  puts ""
 
-#   case user_input
-#   when 1
-#     puts "Please enter a user name"
-#     user_name = gets.chomp.downcase
-#     puts "Please enter a password"
-#     user_pw = gets.chomp.downcase
+  user_input = gets.chomp.to_i
+
+  case user_input
+  when 1
+    puts "Please enter a user name"
+    user_name = gets.chomp.downcase
+    puts "Please enter a password"
+    user_pw = gets.chomp.downcase
     
-#     create_profile(user_name, user_pw, db)
+    create_profile(user_name, user_pw, db)
 
-#     pk = db.execute("
-#         SELECT 
-#       ")
-#     puts "Thanks #{user_name.capitalize}! Your list is initialized!"
-#     puts ""
-#   when 2
+    pk = auth_user(user_name, user_pw, db)
+    puts "Thanks #{user_name.capitalize}! Your list is initialized!"
+    puts ""
+  when 2
+    puts "Please enter a user name"
+    user_name = gets.chomp.downcase
+    puts "Please enter a password"
+    user_pw = gets.chomp.downcase
 
-#   when 3
-#     break
-#   end
+    pk = auth_user(user_name, user_pw, db)
+    puts ""
+  when 3
+    break
+  end
 
-#   loop do
-#     puts ""
-#     puts "What would you like to do next?"
-#     puts "1 - add an item to your list"
-#     puts "2 - remove an item from your list"
-#     puts "3 - update an item on your list"
-#     puts "4 - print list"
-#     puts "5 - return to the main menu"
-#     puts ""
+  while pk != nil
+    puts ""
+    puts "#{user_name.capitalize}, what would you like to do next?"
+    puts "1 - add an item to your list"
+    puts "2 - remove an item from your list"
+    puts "3 - update an item on your list"
+    puts "4 - print list"
+    puts "5 - return to the main menu"
+    puts ""
 
-#     user_action = gets.chomp.to_i
-#     case user_action
-#       when 1
-#         # add_item(db, "take out trash", 1)
-#       when 2
-#         # remove_item(db, 2, 1)
+    user_action = gets.chomp.to_i
+    case user_action
+      when 1
+        puts "What do you want to add?"
+        add_item(db, gets.chomp, pk)
+        print_list(db, pk)
+        puts "Enter any keys to return to your options"
+        gets.chomp
+      when 2
+        print_list(db, pk)
+        puts "Please specify the item number you would like to remove"
+        remove_item(db, gets.chomp.to_i, pk)
+        print_list(db, pk)
+        puts "Enter any keys to return to your options"
+        gets.chomp
+      when 3
+        print_list(db, pk)
+        puts "Please specify the item number you would like to update"
+        old_item_index = gets.chomp.to_i
+        puts "What do you want to update the item to"
+        new_item = gets.chomp
+        update_item(db, old_item_index, new_item, pk)
+        print_list(db, pk)
+        puts "Enter any keys to return to your options"
+        gets.chomp
+      when 4
+        print_list(db, pk)
+        puts "Enter any keys to return to your options"
+        gets.chomp
+      when 5
+        pk = nil
+      else
+        puts "Invalid option.."
+    end
+  end
 
-#       when 3
-#         # update_item(db, 2, "buy milk", 1)
-
-#       when 4
-#         # print_list(db, pk)
-#       when 5
-#         break
-#       else
-#         "Invalid option.."
-#     end
-#   end
-
-# end
+end
 
 
 
