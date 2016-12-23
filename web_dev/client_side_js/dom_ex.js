@@ -19,3 +19,12 @@ greenButton.addEventListener('click', greenBorder);
 
 // bacon
 
+var bacon = document.querySelectorAll('span');
+
+function addBacon(e){
+  document.querySelector('img').classList.toggle('bacon');
+}
+
+bacon.forEach(function(b){
+  b.addEventListener('click', addBacon);
+});
