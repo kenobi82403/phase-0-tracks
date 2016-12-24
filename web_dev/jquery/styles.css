@@ -1,0 +1,44 @@
+div {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.5em;
+  width: 800px;
+}
+
+button.red {
+  background-color: red;
+  width: 200px;
+  height: 100px;
+}
+
+button.green {
+  background-color: green;
+  width: 200px;
+  height: 100px;
+}
+
+span {
+  border: 1px solid yellow;
+  background-color: gray;
+  cursor: pointer;
+}
+
+img {
+  display: none;
+  margin: 0 auto;
+}
+
+img.bacon {
+  display: block;
+}
+
+.red_border {
+  border: 5px solid red;
+  padding: 10px;
+}
+
+
+.green_border {
+  border: 5px solid green;
+  padding: 10px;
+}
