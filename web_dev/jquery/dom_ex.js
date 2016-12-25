@@ -1,30 +1,27 @@
-function redBorder(){
-    para.forEach(function(e){
-      e.classList.toggle('red_border');
-    });
-}
+$('.red').on('click', function(){
+  $('p').toggleClass('red_border');
+});
 
-function greenBorder(){
-    para.forEach(function(e){
-      e.classList.toggle('green_border');
-    });
-}
 
-var redButton = document.querySelector('button.red'),
-    para = document.querySelectorAll('p'),
-    greenButton = document.querySelector('button.green');
+$('.green').on('click', function(){
+  $('p').toggleClass('green_border');
+});
 
-redButton.addEventListener('click', redBorder);
-greenButton.addEventListener('click', greenBorder);
 
 // bacon
-
-var bacon = document.querySelectorAll('span');
-
-function addBacon(e){
-  document.querySelector('img').classList.toggle('bacon');
-}
-
-bacon.forEach(function(b){
-  b.addEventListener('click', addBacon);
+$('span').on('click', function(){
+  $('img').slideToggle('slow').toggleClass('red_border');
 });
+
+$("h1").animate(
+{
+  left: "+=50",
+  opacity: 0.35
+},
+
+1000,
+
+function(){
+  $("h1").html("Click the pig for Bacon Goodness!!");
+}
+);
