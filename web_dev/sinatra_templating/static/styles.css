@@ -1,3 +1,60 @@
 body {
-  font-family: Helvetica;
+  font-family: arial;
+}
+
+.search {
+  display: block;
+}
+
+label {
+  font-weight: bold;
+}
+
+div.card {
+  border: 2px solid black;
+  min-width: 400px;
+  max-width: 600px;
+  margin: 20px auto;
+  height: 260px;
+  /*float: left;*/
+}
+
+div.card h2 {
+  background: steelblue;
+  margin: 0;
+
+}
+
+div.picture {
+  text-align: center;
+  /*border: 1px dotted black;*/
+  width: 200px;
+  display: inline-block;
+  /*background: grey;*/
+  float: left;
+  height: 230px;
+}
+
+div.picture img {
+  margin-top: 15px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
+div.details {
+  margin: 20px;
+  width: 300px;
+/*  min-width: 200px;*/
+  display: inline-block;
+  /*background: lightgrey;*/
+  /*float: left;*/
+}
+
+div.details h3 {
+  display: inline;
+}
+
+div.details p {
+  width: 200px;
+  /*display: inline;*/
 }

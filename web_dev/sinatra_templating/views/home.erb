@@ -6,11 +6,18 @@
 <body>
   <h1>Student Management System</h1>
   <p>Welcome to the student management system.</p>
+  <form action="/cards" method="POST">
+    <label>Search for students</label>
+    <input class="search" type="text" name="name" placeholder="Student name">
+    <input class="search" type="text" name="campus" placeholder="Campus">
+    <input class="search" type="text" name="age" placeholder="Age">
+    <button type="submit">Search</button>
+  </form>
   <p>Click <a href="students/new">here</a> to create a new student.</p>
-  <ul>
+  <ol>
     <% @students.each do |student| %>
       <li><%= student['name'] %>, <%= student['age'] %></li>
     <% end %>
-  </ul>
+  </ol>
 </body>
 </html>
