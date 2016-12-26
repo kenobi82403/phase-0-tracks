@@ -99,3 +99,10 @@ get '/students' do
 
   response
 end
+
+# Research
+# Is Sinatra the only web app library in Ruby? What are some others?  No, there are many. other framework includes Ruby on Rails (full stack Macro Framework), Volt, Cramp, Lattice, Angelo, Lotus, Pakyow, and Ramaze.   
+
+# Are SQLite and the sqlite3 gem your only options for using a database with Sinatra? What are some others? postgreSQL and Active Record.
+
+# What is meant by the term web stack? A webstack describes the collection of software required for web development. At a minimum, a Web stack contains an operating system(OS), a programming language, a database software, and a web server.
