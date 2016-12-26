@@ -26,17 +26,17 @@ end
 
 # write a GET route that retrieves
 # all student data
-get '/students' do
-  students = db.execute("SELECT * FROM students")
-  response = ""
-  students.each do |student|
-    response << "ID: #{student['id']}<br>"
-    response << "Name: #{student['name']}<br>"
-    response << "Age: #{student['age']}<br>"
-    response << "Campus: #{student['campus']}<br><br>"
-  end
-  response
-end
+# get '/students' do
+#   students = db.execute("SELECT * FROM students")
+#   response = ""
+#   students.each do |student|
+#     response << "ID: #{student['id']}<br>"
+#     response << "Name: #{student['name']}<br>"
+#     response << "Age: #{student['age']}<br>"
+#     response << "Campus: #{student['campus']}<br><br>"
+#   end
+#   response
+# end
 
 # write a GET route that retrieves
 # a particular student
@@ -71,3 +71,31 @@ get '/:num1/plus/:num2' do
 end
 
 # Optional bonus: Make a route that allows the user to search the database in some way -- maybe for students who have a certain first name, or some other attribute. If you like, you can simply modify the home page to take a query parameter, and filter the students displayed if a query parameter is present.
+get '/students' do
+  s_name = params[:name]
+  age = params[:age]
+  campus = params[:campus]
+  response = ""
+
+  if(s_name)
+    query = "%#{s_name}%"
+    students = db.execute("SELECT * FROM students WHERE name LIKE ?", [query])
+  elsif(age)
+    query = "%#{age}%"
+    students = db.execute("SELECT * FROM students WHERE age >= ?", [age.to_i])
+  elsif(campus)    
+    query = "%#{campus}%"
+    students = db.execute("SELECT * FROM students WHERE campus LIKE ?", [query])    
+  else
+    students = db.execute("SELECT * FROM students")
+  end
+
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+
+  response
+end
