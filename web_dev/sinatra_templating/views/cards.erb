@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Query</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- <meta http-equiv="refresh" content="1"> -->
+</head>
+<body>
+  <form action="/cards" method="POST">
+    <label>Search for students</label>
+    <input class="search" type="text" name="name" placeholder="Student name">
+    <input class="search" type="text" name="campus" placeholder="Campus">
+    <input class="search" type="text" name="age" placeholder="Age">
+    <label>Order by:</label>
+    <select name="order">
+      <option value="none">None</option>
+      <option value="name">Name</option>
+      <option value="age">Age</option>
+      <option value="campus">Campus</option>
+    </select>
+    <button type="submit">Search</button>
+  </form>
+  <% @students.each do |student| %>
+  <div class="card">
+    <h2>STUDENT IDENTITY CARD</h2>
+    <div class="picture">
+      <img src="https://static.posters.cz/image/350/minyonok-gru-carl-close-up-i24325.jpg">
+    </div>
+    <div class="details">
+      <h3>Name:</h3>
+        <p><%= student['name'] %></p>
+      <h3>Age:</h3>
+        <p><%= student['age'] %></p>
+      <h3>Campus:</h3>
+        <p><%= student['campus'] %></p>
+    </div>
+  </div>
+  <% end %>
+</body>
+</html>
